@@ -11,7 +11,11 @@ import { ToastrModule } from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AboutComponent } from './components/pages/about/about.component';
 import { HowWorkComponent } from './components/pages/how-work/how-work.component';
+<<<<<<< HEAD
 import { CompleteProfileComponent } from './components/pages/complete-profile/complete-profile.component'
+=======
+import { HomeComponent } from './components/pages/home/home.component'
+>>>>>>> 282f969478c88fa12579a80414c2cd25761539a5
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +24,11 @@ import { CompleteProfileComponent } from './components/pages/complete-profile/co
     TitleComponent,
     AboutComponent,
     HowWorkComponent,
+<<<<<<< HEAD
     CompleteProfileComponent
+=======
+    HomeComponent
+>>>>>>> 282f969478c88fa12579a80414c2cd25761539a5
   ],
   imports: [
     BrowserModule,
