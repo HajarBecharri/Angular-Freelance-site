@@ -1,0 +1,40 @@
+<header>
+    <div class="container">
+        <a routerLink="/" class="logo">near <span>|</span></a>
+        
+        <nav>
+            <ul>
+                <li >
+                    <li *ngIf="!user.token && !user.token" class="menu-container">
+                    <a routerLink="/login" class="logo">login</a>
+                    <div class="menu">
+                        <a routerLink="/login/freelancer">Freelancer</a> 
+                        <a routerLink="/login/client">Client</a>
+                        
+                    </div>
+                    </li>
+                
+                <li *ngIf="!user.token" >
+                    <a routerLink="/Register" class="logo">Sign UP</a>  
+                </li>
+
+                
+                <li class="menu-container">
+                    <a routerLink="/dashboard">Guid</a>  
+                    <div class="menu">
+                        <a routerLink="/about">about</a> 
+                        <a routerLink="/how-work">how it work</a>
+                        <a *ngIf="user.token" (click)="logout()">logout</a>
+                    </div>
+                </li>
+                <li *ngIf="user.token" >
+                    <a routerLink="profil" class="logo">{{user.email}}</a>  
+                </li>
+                <div class="box">
+                    <a routerLink="/add_project">add project</a>
+                </div>
+            </ul>
+        </nav>
+    </div>
+</header>
+

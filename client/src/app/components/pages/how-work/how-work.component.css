@@ -1,0 +1,356 @@
+.wrapper {
+   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: #fff;
+    padding: 5px 30px;
+    width: 100%;
+    
+    
+  }
+.wrapper:hover{
+    background-color: #040404;
+    color: #1E90FF;
+    
+}
+  .hr {
+    display: flex;
+    align-items: center;
+  }
+
+  hr {
+    width: 30px;
+    height: 1px;
+    background: black;
+    margin: 0 15px;
+  }
+
+  h2 {
+    font-size: 25px;
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+
+  .mission-txt {
+    font-size: 18px;
+    font-weight: 500px;
+    font-style: italic;
+    margin-top: 0;
+  }
+
+  div img {
+    width: 150px;
+    filter: drop-shadow(0 10px 5px black);
+  }
+
+  p {
+    text-align: justify;
+  }
+
+  .faculties {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .unit {
+    margin: 25px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .unit img {
+    border-radius: 100px;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 10px;
+  }
+
+  .unit p {
+    text-align: left;
+    margin: 2px;
+  }
+
+  .unit p:first-of-type {
+    font-weight: bolder;
+    margin-bottom: 5px;
+  }
+
+  .background {
+    background-image: url("https://www.f-cdn.com/assets/main/en/assets/how-it-works/client-desktop.jpg");
+    background-blend-mode: darken;
+    background-size: cover;
+    height: 100vh;
+}
+
+
+.box-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    max-width: 50%;
+    height: 40%;
+    flex-direction: column;
+    
+}
+
+
+
+
+
+.text-big {
+    margin-top: 20px;
+    font-family: 'Piazzolla', serif;
+    font-weight: bold;
+    font-size: 45px;
+    text-align: center;
+    color: rgb(79, 149, 248);
+}
+
+
+.text-small {
+    font-family: 'Sansita Swashed', cursive;
+    font-size: 20px;
+    text-align: center;
+    color: black;
+}
+
+button{
+    
+    height: 50px;
+    width: 300px;
+    background-color: #1E90FF;
+    color: #040404;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 130px;
+    margin-top: 280px;
+    border-radius: 3px;
+    opacity: 0.8;
+}
+
+button:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+  @media screen and (max-width:820px) {
+    .wrapper {
+      width: 80%;
+      padding: 5px 30px;
+    }
+  }
+
+
+
+  .about{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: #fff;
+    padding: 5px 30px;
+    width: 100%;
+    margin-bottom: 30px;
+
+}
+.about h3{
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+}
+
+ p{
+    font-size: 12px;
+    font-weight: bold;
+}
+
+h3:before{
+    content:"  ";
+    display: block;
+    height: 22px;
+    width: 4px;
+    position: absolute;
+    left: -5px;
+    
+    background: #1E90FF;
+
+}
+
+.button{
+    
+    justify-content: center;
+    flex-direction: row;
+    
+}
+
+
+
+
+
+
+
+@import url("https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css");
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
+
+*,
+*::before,
+*::after {
+  
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  --color: rgba(30, 30, 30);
+  --bgColor: rgb(215, 215, 215);
+  min-height: 100vh;
+
+  display: grid;
+  align-content: center;
+  gap: 2rem;
+  padding: 2rem;
+
+  font-family: "Oxygen", sans-serif;
+  color: var(--color);
+  background: var(--bgColor);
+}
+
+h1 {
+  text-align: center;
+}
+
+ol {
+  width: min(60rem, 90%);
+  margin-inline: auto;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+
+  list-style: none;
+  counter-reset: cardnr;
+  justify-content: center;
+}
+
+li {
+  --frontColor: white;
+  --width: 10em;
+  --inlineP: 0.5rem;
+  --borderR: 4rem;
+  --arrowW: 2rem;
+  --arrowH: 1.5rem;
+
+  counter-increment: cardnr;
+  width: calc(var(--width) - var(--inlineP) * 2);
+  display: grid;
+  grid-template:
+    "icon" var(--borderR)
+    "title"
+    "descr" 1fr;
+  margin-inline: var(--inlineP);
+  margin-bottom: calc(var(--borderR));
+  position: relative;
+}
+li .icon,
+li .title,
+li .descr {
+  background: var(--frontColor);
+  padding-inline: 1rem;
+  padding-bottom: 1rem;
+}
+li .icon,
+li .title {
+  color: var(--accent-color);
+  text-align: center;
+  padding-bottom: 0.5rem;
+}
+
+li .title,
+li .descr {
+  filter: drop-shadow(0.125rem 0.125rem 0.075rem rgba(0, 0, 0, 0.25));
+}
+li .icon {
+  grid-area: icon;
+  font-size: 2rem;
+  display: grid;
+  place-items: center;
+  border-radius: var(--borderR) 0 0 0;
+  position: relative;
+}
+
+li .title {
+  grid-area: title;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+li .descr {
+  grid-area: descr;
+  font-size: 0.85rem;
+  text-align: center;
+}
+li .descr::before {
+  content: "";
+  width: var(--arrowW);
+  height: var(--arrowH);
+  position: absolute;
+  right: 1.5rem;
+  top: 100%;
+  background: inherit;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+li::after {
+  content: counter(cardnr, decimal-leading-zero);
+  position: absolute;
+  z-index: -1;
+
+  left: calc(var(--inlineP) * -1);
+  right: calc(var(--inlineP) * -1);
+  top: var(--borderR);
+  bottom: calc(var(--borderR) * -1);
+
+  display: flex;
+  align-items: flex-end;
+  background: var(--accent-color);
+  background-image: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.25),
+    transparent 25% 75%,
+    rgba(0, 0, 0, 0.25)
+  );
+  border-radius: 0 0 var(--borderR) 0;
+
+  --pad: 1rem;
+  padding: var(--pad);
+  font-size: calc(var(--borderR) - var(--pad) * 2);
+  color: white;
+}
+li::before {
+  content: "";
+  position: absolute;
+  height: var(--borderR);
+  top: calc(100% + var(--borderR) - 2px);
+  left: calc(var(--inlineP) * -1);
+  right: calc(var(--inlineP) * -1);
+  border-radius: 0 var(--borderR) 0 0;
+
+  background-image: linear-gradient(var(--accent-color), transparent 60%);
+  opacity: 0.5;
+  filter: blur(2px);
+}
+
+.credits {
+  margin-top: 2rem;
+  text-align: right;
+}
+.credits a {
+  color: var(--color);
+}

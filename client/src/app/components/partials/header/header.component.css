@@ -1,0 +1,72 @@
+header{
+
+    position: relative;
+    background: rgb(3, 2, 2);
+    padding: 0;
+    border-bottom: 1px solid #1E90FF;
+}
+
+a{
+    transition: box-shadow .3s;
+    color: #1E90FF;
+}
+
+a:hover{
+    background: #1E90FF;
+    color: white;
+    cursor: pointer;
+    border-radius: 2px;
+    box-shadow: 0 0 11px #1E90FF;
+}
+
+.container {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+a.logo{
+    font-weight: bold;
+    padding: 1rem;
+}
+
+ul{
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+}
+ul a{
+    padding: 1rem;
+    display: inline-block;
+}
+
+a span {
+    
+    color: white;
+    padding: 0.1 rem 0.45 rem;
+    border-radius: 100rem;
+    font-size: 0.9rem;
+}
+
+.menu-container{
+    position: relative;
+
+}
+.menu{
+    position: absolute;
+    z-index: 1;
+    background: whitesmoke;
+    display: none;
+}
+
+.menu-container:hover .menu{
+    display: block;
+
+}
+
+.menu a {
+    width: 100%;
+    min-width: 8rem;
+}
+

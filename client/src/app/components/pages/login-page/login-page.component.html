@@ -1,0 +1,36 @@
+<div class="box">
+  <div class="form">
+      <h2 style="color:1E90FF;">
+          Sign In
+      </h2>
+      <form [formGroup]="loginForm" (ngSubmit)="submit()">
+      <div class="inputBox">
+          <label for="">email</label>
+          <input type="email" formControlName="email">
+          
+          
+          <div class="errors" *ngIf="fc.email.errors && isSabmitted">
+            <div *ngIf="fc.email.errors.required">the field must be not empty</div>
+            <div *ngIf="fc.email.errors.email">the email is invalid</div>
+ 
+           </div>
+      </div>
+      <div class="inputBox">
+          <label for="">password</label>
+          <input type="password" formControlName="password">
+          
+          <div class="errors" *ngIf="fc.password.errors && isSabmitted">
+            <div *ngIf="fc.password.errors.required">the field must be not empty</div>
+           </div>
+         
+      </div>
+      <button type="submit">Submit</button>
+      <div class="links">
+          <a href="#">Forot password?</a>
+          <a routerLink="SignUp">SignUp</a>
+      </div>
+      
+    </form>
+  </div>
+</div>
+

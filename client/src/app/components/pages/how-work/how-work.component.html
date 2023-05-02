@@ -1,0 +1,57 @@
+<div class="container">
+    <section class="background">
+        <div class="box-main">
+            
+                <p class="text-big">Here when you can change your life</p>
+                  
+                <p class="text-small">
+                    Here you will get to know that you can do it
+                </p>
+                
+               
+            
+        </div>
+        <div class="button">
+        <button class="button" (click)="Freelancer_choice()" [ngStyle]="{'background-color':freelancer_bgcolor,color:freelancer_color}">Freelancer</button>
+        <button class="button" (click)="Client_choice()" [ngStyle]="{'background-color':client_bgcolor,color:client_color}">Client</button>
+    </div>
+    </section>
+  
+    
+    
+    <h1 class="text-big">how it works!</h1>
+    <ol>
+        <li style="--accent-color:#0D6EFD" *ngFor="let data of data">
+            <div class="icon"><i class="fa-brands fa-codepen"></i></div>
+            <div class="title">{{data.li}}</div>
+            <div class="descr">{{data.P}}</div>
+        </li>
+
+
+    </ol>
+
+    <div class="about">
+        <h2 class="text-big">Why choose Us</h2>
+  
+        <h3>Respecter votre budget</h3>
+        <p>Trouvez des services de haute qualité à tous les prix. Pas de tarifs horaires, mais une tarification en fonction des projets.</p>
+        <h3>Un travail de qualité réalisé rapidement</h3>
+        <p>Confiez votre projet à un freelance talentueux en quelques minutes et obtenez des résultats durables.</p>
+        <h3>Payer une fois satisfait(e)</h3>
+        <p>Les devis sont établis à l'avance, ce qui évite les surprises. Le paiement est débloqué uniquement lorsque vous l'approuvez.</p>
+  
+  
+            
+        </div>
+      </div>
+
+     
+    
+     
+
+
+  
+    
+
+      
+        
