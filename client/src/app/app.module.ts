@@ -10,7 +10,8 @@ import { TitleComponent } from './components/partials/title/title.component';
 import { ToastrModule } from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AboutComponent } from './components/pages/about/about.component';
-import { HowWorkComponent } from './components/pages/how-work/how-work.component'
+import { HowWorkComponent } from './components/pages/how-work/how-work.component';
+import { CompleteProfileComponent } from './components/pages/complete-profile/complete-profile.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,8 @@ import { HowWorkComponent } from './components/pages/how-work/how-work.component
     LoginPageComponent,
     TitleComponent,
     AboutComponent,
-    HowWorkComponent
+    HowWorkComponent,
+    CompleteProfileComponent
   ],
   imports: [
     BrowserModule,
