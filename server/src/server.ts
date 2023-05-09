@@ -2,7 +2,7 @@
 import express from "express";
 //we need it to have request from other port than 5000
 import cors from "cors";
-import { sample_users } from "./data";
+import { sample_project, sample_users } from "./data";
 import jwt from "jsonwebtoken"
 
 
@@ -55,17 +55,15 @@ const generateTokenResponce=(user:any)=>{
     user.token=token;
     return user;
     
-    
-    
-
 }
 app.use(cors({
     credentials:true,
     origin:["http://localhost:4200"]
 }));
 
-
-
+app.get('/projects' , (req , res)=>{
+    res.send(sample_project);
+});
 
 const port =5000;
 

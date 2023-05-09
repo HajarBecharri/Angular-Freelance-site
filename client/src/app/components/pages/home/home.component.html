@@ -1,1 +1,31 @@
-<p>home works!</p>
+
+<section class="background">
+  <header>
+    <h1>Freelancer site</h1>
+    <p>Hire expert</p>
+    <p>Internet Marketing Specialists</p>
+      <p>for any job</p>
+
+</header>
+</section>
+  <body>
+  <ul class="container">
+    <li *ngFor="let project of projects">
+      <div class="card">
+          <div class="face face1">
+              <div class="content">
+                  <img [src] = "project.imageUrl" width="600px" height="100px">
+                  <h3>{{project.description}}</h3>
+              </div>
+          </div>
+          <div class="face face2">
+              <div class="content">
+                  <p>{{project.period}}</p>
+                  <p>{{project.budjet}}</p>
+                      <a href="#">{{project.cathegorie}}</a>
+              </div>
+          </div>
+      </div>
+</li>
+</ul>
+</body>

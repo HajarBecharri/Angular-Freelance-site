@@ -1,5 +1,5 @@
 .wrapper {
-   
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,12 +8,11 @@
     padding: 5px 30px;
     width: 100%;
     
-    
   }
 .wrapper:hover{
     background-color: #040404;
     color: #1E90FF;
-    
+
 }
   .hr {
     display: flex;
@@ -98,7 +97,7 @@
     max-width: 50%;
     height: 40%;
     flex-direction: column;
-    
+
 }
 
 
@@ -123,7 +122,7 @@
 }
 
 button{
-    
+
     height: 50px;
     width: 300px;
     background-color: #1E90FF;
@@ -178,16 +177,16 @@ h3:before{
     width: 4px;
     position: absolute;
     left: -5px;
-    
+
     background: #1E90FF;
 
 }
 
 .button{
-    
+
     justify-content: center;
     flex-direction: row;
-    
+
 }
 
 
@@ -202,7 +201,7 @@ h3:before{
 *,
 *::before,
 *::after {
-  
+
   padding: 0;
   box-sizing: border-box;
 }
