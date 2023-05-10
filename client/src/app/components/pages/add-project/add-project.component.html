@@ -1,0 +1,131 @@
+
+<div class="formbold-main-wrapper">
+  <!-- Author: FormBold Team -->
+  <!-- Learn More: https://formbold.com -->
+  <div class="formbold-form-wrapper">
+    <form action="https://formbold.com/s/FORM_ID" method="POST">
+      <div class="formbold-input-group">
+        <!-- <input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Enter the name project "
+          class="formbold-form-input"
+        /> -->
+      <div class="formbold-input-radio-wrapper">
+        <label for="name" class="formbold-form-label" style="font-size: 30px;">Give a name for your project</label>
+        <div class="formbold-radio-flex">
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input
+                class="formbold-input-radio"
+                type="radio"
+                name="french"
+                id="french"
+              />
+              Website for a French bakery
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label" >
+              <input
+                class="formbold-input-radio"
+                type="radio"
+                name="french"
+                id="mobile"
+              />
+              Mobile app for fitness startup
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input
+                class="formbold-input-radio"
+                type="radio"
+                name="french"
+                id="photographie"
+              />
+              Photographers needed for my wedding
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="formbold-input-group">
+        <label class="formbold-form-label">
+          What type of website do you need?
+        </label>
+        <select class="formbold-form-select" name="occupation" id="occupation">
+          <option></option>
+          <option value="Student">Personal</option>
+          <option value="designer">For an existing business</option>
+          <option value="fullstack">For starting a new enterprise</option>
+          <option value="frontend"> Other </option>
+        </select>
+      </div>
+      <div class="formbold-input-group">
+        <label class="formbold-form-label" style="font-size: 20px">
+          Do you have any specific design preferences?
+        </label>
+
+        <select class="formbold-form-select" name="occupation" id="occupation">
+          <option></option>
+
+          <option value="Student">Past work</option>
+          <option value="designer">Experience</option>
+          <option value="fullstack">Detailed project proposals</option>
+          <option value="frontend"> Other </option>
+        </select>
+      </div>
+      <div class="formbold-input-group">
+        <label class="formbold-form-label" style="font-size: 20px">
+          What pages do you need on your website?
+        </label>
+        <select class="formbold-form-select" name="occupation" id="occupation">
+          <option></option>
+          <option value="Student">ASAP</option>
+          <option value="designer">Within a month</option>
+          <option value="fullstack">No time limit</option>
+          <option value="frontend"> Other </option>
+        </select>
+      </div>
+      <div class="formbold-input-group">
+        <label for="email" class="formbold-form-label" style="font-size: 20px">Add the period project</label>
+        <input
+          type="email"
+          name="lastname"
+          id="email"
+          placeholder="Enter the period project"
+          class="formbold-form-input"
+        />
+      </div>
+      <div class="formbold-input-group">
+        <label for="age" class="formbold-form-label" style="font-size: 20px">Add the budjet</label>
+        <input
+          type="text"
+          name="age"
+          id="age"
+          placeholder="Enter the budjet"
+          class="formbold-form-input"
+        />
+      </div>
+
+      <div class="formbold-input-group">
+        <label for="email" class="formbold-form-label" style="font-size: 20px">Uploid an image</label>
+        <input
+          type="file"
+          name="lastname"
+          id="email"
+          placeholder="Enter the period project"
+          class="formbold-form-input"
+        />
+      </div>
+      <button (click)="UserExiste()" class="formbold-btn">Submit</button>
+    </form>
+  </div>
+</div>

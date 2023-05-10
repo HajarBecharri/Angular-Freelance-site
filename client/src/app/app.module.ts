@@ -13,6 +13,9 @@ import { AboutComponent } from './components/pages/about/about.component';
 import { HowWorkComponent } from './components/pages/how-work/how-work.component';
 import { CompleteProfileComponent } from './components/pages/complete-profile/complete-profile.component'
 import { HomeComponent } from './components/pages/home/home.component';
+import { GetIdeaComponent } from './components/pages/get-idea/get-idea.component';
+import { AddProjectComponent } from './components/pages/add-project/add-project.component';
+import { SignupComponent } from './components/pages/signup/signup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +25,10 @@ import { HomeComponent } from './components/pages/home/home.component';
     AboutComponent,
     HowWorkComponent,
     CompleteProfileComponent,
-    HomeComponent
+    HomeComponent,
+    GetIdeaComponent,
+    AddProjectComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

@@ -7,4 +7,5 @@ export class Project{
   period!:string;
   cathegorie!:Cathegorie;
   imageUrl!:string;
+  done!:boolean
 }

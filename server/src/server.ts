@@ -71,6 +71,12 @@ app.get('/cathegorie/:cte',(req , res)=>{
     const name = req.params.cte ; 
     const projects = sample_project.filter(item => item.cathegorie === name);
      res.send(projects);
+});
+
+app.get('/get_idea' ,(req ,res)=>{
+    const projects = sample_project.filter(item => item.done === true); 
+    res.send(projects);
+    console.log(projects);
 })
 const port =5000;
 

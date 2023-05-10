@@ -10,7 +10,8 @@ export const sample_users: any[]=[
           budjet: '$200',
           period : '7 days',
           cathegorie : 'modlign',
-          imageUrl : 'assets/1.jpg'
+          imageUrl : 'assets/1.jpg',
+          done: false 
         },
         {
           id:'2',
@@ -18,7 +19,8 @@ export const sample_users: any[]=[
           budjet: '$125 ',
           period : '1 day',
           cathegorie : 'modlign',
-          imageUrl : 'assets/2.jpg'
+          imageUrl : 'assets/2.jpg',
+          done: true
         },
         {
           id:'3',
@@ -26,7 +28,8 @@ export const sample_users: any[]=[
           budjet:'$350',
           period : ' 7 days',
           cathegorie : 'modlign',
-          imageUrl : 'assets/3.jpg'
+          imageUrl : 'assets/3.jpg',
+          done: false
         },
         {
           id:'4',
@@ -34,7 +37,8 @@ export const sample_users: any[]=[
           budjet:'$350',
           period : ' 7 days',
           cathegorie : 'brandling',
-          imageUrl : 'assets/4.jpg'
+          imageUrl : 'assets/4.jpg',
+          done: true
         },
         {
           id:'5',
@@ -42,7 +46,8 @@ export const sample_users: any[]=[
           budjet:'$350',
           period : ' 7 days',
           cathegorie : 'graphic',
-          imageUrl : 'assets/5.jpg'
+          imageUrl : 'assets/5.jpg',
+          done: false
         },
         {
           id:'6',
@@ -50,7 +55,8 @@ export const sample_users: any[]=[
           budjet:'$350',
           period : ' 7 days',
           cathegorie : 'illustration',
-          imageUrl : 'assets/6.jpg'
+          imageUrl : 'assets/6.jpg',
+          done: true
         },
         {
           id:'7',
@@ -58,7 +64,8 @@ export const sample_users: any[]=[
           budjet:'$350',
           period : ' 7 days',
           cathegorie : 'logoDesign',
-          imageUrl : 'assets/7.jpg'
+          imageUrl : 'assets/7.jpg',
+          done: false
         },
         {
           id:'8',
@@ -66,7 +73,8 @@ export const sample_users: any[]=[
           budjet:'$350',
           period : ' 7 days',
           cathegorie : 'mobile',
-          imageUrl : 'assets/8.jpg'
+          imageUrl : 'assets/8.jpg',
+          done: true
         },
         {
           id:'9',
@@ -74,7 +82,8 @@ export const sample_users: any[]=[
           budjet:'$350',
           period : ' 7 days',
           cathegorie : 'packageDesign',
-          imageUrl : 'assets/9.jpg'
+          imageUrl : 'assets/9.jpg',
+          done: false
         },
         {
           id:'10',
@@ -82,14 +91,16 @@ export const sample_users: any[]=[
           budjet:'$350',
           period : ' 7 days',
           cathegorie : 'productDesign',
-          imageUrl :'assets/9.jpg'
+          imageUrl :'assets/9.jpg',
+          done: true
         }, {
           id:'9',
           description: 'Interior 3D model',
           budjet:'$350',
           period : ' 7 days',
           cathegorie : 'websiteDesign',
-          imageUrl : 'assets/9.jpg'
+          imageUrl : 'assets/9.jpg',
+          done: false
         },
         {
           id:'9',
@@ -97,7 +108,8 @@ export const sample_users: any[]=[
           budjet:'$350',
           period : ' 7 days',
           cathegorie : 'modlign',
-          imageUrl : 'assets/9.jpg'
+          imageUrl : 'assets/9.jpg',
+          done: true 
         }
       ]
 

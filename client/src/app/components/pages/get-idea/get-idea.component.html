@@ -1,0 +1,28 @@
+
+<section class="background">
+</section>
+<div class="title">
+  <h1 style="font-size: 70px; font-family: 'Times New Roman', Times, serif;">Make it Real with Freelancer.</h1>
+   <span style="font-size: 50px; font-family: Georgia, 'Times New Roman', Times, serif;">There are sume projects maked by our freelancers!!</span>
+</div>
+<body>
+<ul class="container">
+  <li *ngFor="let project of projects">
+    <div class="card">
+        <div class="face face1">
+            <div class="content">
+                <img [src] = "project.imageUrl" width="600px" height="100px">
+                <h3>{{project.description}}</h3>
+            </div>
+        </div>
+        <div class="face face2">
+            <div class="content">
+                <p>{{project.period}}</p>
+                <p>{{project.budjet}}</p>
+                   <a routerLink = "/cathegorie/{{project.cathegorie}}">Read More</a>
+            </div>
+        </div>
+    </div>
+</li>
+</ul>
+</body>
