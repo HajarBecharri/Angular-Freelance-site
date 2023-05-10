@@ -7,5 +7,6 @@ export const PROJECTS_URL = BASE_URL + '/projects';
 
 export const CATHEGORIE_URL = BASE_URL + '/cathegorie/';
 
+export const ADD_PROJECT = BASE_URL + '/add_project' ;
 
-export const ADD_PROJECT = BASE_URL + '/add_project'
+export const CATHEGORIES_URL = BASE_URL + '/cathegories'

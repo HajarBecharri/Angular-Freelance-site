@@ -1,13 +1,19 @@
-
 <section class="background">
-  <header>
     <h1>Freelancer site</h1>
     <p>Hire expert</p>
     <p>Internet Marketing Specialists</p>
       <p>for any job</p>
-
-</header>
 </section>
+  <nav>
+    <ul>
+      <li>
+        <a routerLink="/cathegorie/all">All</a>
+      </li>
+    <li  class="menu-container"  *ngFor="let cathegorie of cathegories">
+      <a routerLink ="/cathegorie/{{cathegorie.name}}">{{cathegorie.name}}</a>
+    </li>
+  </ul>
+ </nav>
   <body>
   <ul class="container">
     <li *ngFor="let project of projects">
@@ -22,7 +28,7 @@
               <div class="content">
                   <p>{{project.period}}</p>
                   <p>{{project.budjet}}</p>
-                      <a href="#">{{project.cathegorie}}</a>
+                     <a routerLink = "/cathegorie/{{project.cathegorie}}">Read More</a>
               </div>
           </div>
       </div>

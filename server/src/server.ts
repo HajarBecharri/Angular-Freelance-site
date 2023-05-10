@@ -2,7 +2,7 @@
 import express from "express";
 //we need it to have request from other port than 5000
 import cors from "cors";
-import { sample_project, sample_users } from "./data";
+import { sample_cathegorie, sample_project, sample_users } from "./data";
 import jwt from "jsonwebtoken"
 
 
@@ -64,7 +64,14 @@ app.use(cors({
 app.get('/projects' , (req , res)=>{
     res.send(sample_project);
 });
-
+app.get('/cathegories' , (req,res)=>{
+   res.send(sample_cathegorie);
+})
+app.get('/cathegorie/:cte',(req , res)=>{
+    const name = req.params.cte ; 
+    const projects = sample_project.filter(item => item.cathegorie === name);
+     res.send(projects);
+})
 const port =5000;
 
 app.listen(port,()=>{

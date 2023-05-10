@@ -9,7 +9,7 @@ export const sample_users: any[]=[
           description: 'AI generated art.',
           budjet: '$200',
           period : '7 days',
-          cathegorie : 'web design',
+          cathegorie : 'modlign',
           imageUrl : 'assets/1.jpg'
         },
         {
@@ -17,7 +17,7 @@ export const sample_users: any[]=[
           description: 'Wordpress website',
           budjet: '$125 ',
           period : '1 day',
-          cathegorie : 'twedwech',
+          cathegorie : 'modlign',
           imageUrl : 'assets/2.jpg'
         },
         {
@@ -25,7 +25,7 @@ export const sample_users: any[]=[
           description: 'Interior 3D model',
           budjet:'$350',
           period : ' 7 days',
-          cathegorie : 'web design',
+          cathegorie : 'modlign',
           imageUrl : 'assets/3.jpg'
         },
         {
@@ -33,7 +33,7 @@ export const sample_users: any[]=[
           description: 'Interior 3D model',
           budjet:'$350',
           period : ' 7 days',
-          cathegorie : 't6w98iiuw',
+          cathegorie : 'brandling',
           imageUrl : 'assets/4.jpg'
         },
         {
@@ -41,7 +41,7 @@ export const sample_users: any[]=[
           description: 'Interior 3D model',
           budjet:'$350',
           period : ' 7 days',
-          cathegorie : 'web design',
+          cathegorie : 'graphic',
           imageUrl : 'assets/5.jpg'
         },
         {
@@ -49,7 +49,7 @@ export const sample_users: any[]=[
           description: 'Interior 3D model',
           budjet:'$350',
           period : ' 7 days',
-          cathegorie : 't6w98iiuw',
+          cathegorie : 'illustration',
           imageUrl : 'assets/6.jpg'
         },
         {
@@ -57,7 +57,7 @@ export const sample_users: any[]=[
           description: 'Interior 3D model',
           budjet:'$350',
           period : ' 7 days',
-          cathegorie : 'web design',
+          cathegorie : 'logoDesign',
           imageUrl : 'assets/7.jpg'
         },
         {
@@ -65,7 +65,7 @@ export const sample_users: any[]=[
           description: 'Interior 3D model',
           budjet:'$350',
           period : ' 7 days',
-          cathegorie : 'web design',
+          cathegorie : 'mobile',
           imageUrl : 'assets/8.jpg'
         },
         {
@@ -73,7 +73,7 @@ export const sample_users: any[]=[
           description: 'Interior 3D model',
           budjet:'$350',
           period : ' 7 days',
-          cathegorie : 'web design',
+          cathegorie : 'packageDesign',
           imageUrl : 'assets/9.jpg'
         },
         {
@@ -81,14 +81,14 @@ export const sample_users: any[]=[
           description: 'Interior 3D model',
           budjet:'$350',
           period : ' 7 days',
-          cathegorie : 'web design',
+          cathegorie : 'productDesign',
           imageUrl :'assets/9.jpg'
         }, {
           id:'9',
           description: 'Interior 3D model',
           budjet:'$350',
           period : ' 7 days',
-          cathegorie : 'web design',
+          cathegorie : 'websiteDesign',
           imageUrl : 'assets/9.jpg'
         },
         {
@@ -96,8 +96,51 @@ export const sample_users: any[]=[
           description: 'Interior 3D model',
           budjet:'$350',
           period : ' 7 days',
-          cathegorie : 'web design',
+          cathegorie : 'modlign',
           imageUrl : 'assets/9.jpg'
         }
       ]
+
+      export const sample_cathegorie: any[] = [
+        {
+          id:'1',
+          name:'websiteDesign'
+        },
+        {
+          id:'2',
+          name:'modlign'
+        },
+        {
+          id:'3',
+          name:'productDesign'
+        },
+        {
+          id:'4',
+          name:'packageDesign'
+        },
+        {
+          id:'5',
+          name:'websiteDesign'
+        },
+        {
+          id:'6',
+          name:'mobile'
+        },
+        {
+          id:'7',
+          name:'logoDesign'
+        },
+        {
+          id:'8',
+          name:'illustration'
+        },
+        {
+          id:'9',
+          name:'graphic'
+        },
+        {
+          id:'10',
+          name:'brandling'
+        }
+      ]     
       
