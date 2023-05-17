@@ -1,0 +1,136 @@
+.background{
+  margin-top: 0;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  background-image: url("https://img.freepik.com/free-photo/blithesome-student-green-t-shirt-posing-with-laptop-indoor-photo-amazed-male-freelancer-isolated_197531-20164.jpg?w=2000");
+  background-size: 1600px;
+}
+.background h1 {
+  font-size: 90px;
+  font-weight: 600;
+  margin-top: 0;
+  background-image: linear-gradient(to left, #074145, #9cf8cc);
+  color: transparent;
+  text-align: center;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+.carousal-main{
+  position: absolute;
+  margin-top: 100px;
+}
+.example-card {
+max-width: 100%;
+margin-top: 5%;
+margin-bottom: 5%;
+box-shadow: 0 3px 6px rgba(#ACC0E9,.5);
+}
+
+.example-header-image {
+background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+background-size: cover;
+}
+
+.card{
+display: inline-block;
+background: #FFF;
+width: 100%;
+height: 100%;
+border-radius: 4px;
+position: relative;
+
+}
+.carousel-item{
+height: 500px;
+width: 100%;
+position: relative;
+background-color:white;
+
+}
+.mat-parent {
+background-color:white;
+margin-top: 6%;
+width: 80%;
+margin-left: 10%;
+/*background-image: url("/assets/img/bg1.jpg");*/
+}
+.mat-parent-small{
+display: none;
+}
+/*for ipad and other lage tabs*/
+@media only screen and (max-width: 768px) {
+.mat-parent-small{
+  display: block;
+}
+.mat-parent{
+  display: none;
+}
+.mat-parent-small {
+background-color:white;
+margin-top: 19%;
+width: 96%;
+margin-left: 2%;
+position: relative;
+height: 660px;
+padding-bottom: 10%;
+
+}
+.carousel-item{
+height: 596px;
+width: 100%;
+position: relative;
+background-color:white;
+
+}
+.example-card {
+max-width: 100%;
+margin-top: 1%;
+margin-bottom: 1%;
+box-shadow: 0 3px 6px rgba(#ACC0E9,.5);
+}}
+/*for mobile devices*/
+@media only screen and (max-width: 500px) {
+ .mat-parent-small{
+  display: block;
+}
+.mat-parent{
+  display: none;
+}
+.mat-parent-small {
+background-color:white;
+margin-top: 19%;
+width: 96%;
+margin-left: 2%;
+position: relative;
+height: 440px;
+padding-bottom: 10%;
+/*background-image: url("/assets/img/bg1.jpg");*/
+}
+.carousel-item{
+height: 385px;
+width: 100%;
+position: relative;
+background-color:white;
+
+}
+.example-card {
+max-width: 100%;
+margin-top: 1%;
+margin-bottom: 1%;
+box-shadow: 0 3px 6px rgba(#ACC0E9,.5);
+}
+}
+ul{
+  display: inline;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+}
+ul li{
+  display: inline-block;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}

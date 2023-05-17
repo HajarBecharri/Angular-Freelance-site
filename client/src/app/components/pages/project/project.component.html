@@ -1,0 +1,30 @@
+
+<div  class="container">
+  <img [src]="project.imageUrl" />
+  <div class="details">
+    <div class="header">
+      <span class="name">
+       {{project.description}}
+      </span>
+    </div>
+    <div class="tags">
+    </div>
+
+    <div class="cook-time">
+      <span>
+        Time to acheive the project is <strong>{{project.period}}</strong>
+      </span>
+    </div>
+
+    <div class="price">
+      <span>
+     {{project.budjet}}
+      </span>
+    </div>
+
+    <button ><a  routerLink="/cathegorie/{{project.cathegorie}}">
+      {{project.cathegorie}}
+    </a></button>
+
+  </div>
+</div>

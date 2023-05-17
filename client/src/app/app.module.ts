@@ -16,6 +16,14 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { GetIdeaComponent } from './components/pages/get-idea/get-idea.component';
 import { AddProjectComponent } from './components/pages/add-project/add-project.component';
 import { SignupComponent } from './components/pages/signup/signup.component';
+import { DeashbordFreelancerComponent } from './components/pages/deashbord-freelancer/deashbord-freelancer.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import { DeashbordClientComponent } from './components/pages/deashbord-client/deashbord-client.component';
+import { ProfileComponent } from './components/pages/profile/profile.component';
+import {MatIconModule} from '@angular/material/icon';
+import { ProjectComponent } from './components/pages/project/project.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +36,11 @@ import { SignupComponent } from './components/pages/signup/signup.component';
     HomeComponent,
     GetIdeaComponent,
     AddProjectComponent,
-    SignupComponent
+    SignupComponent,
+    DeashbordFreelancerComponent,
+    DeashbordClientComponent,
+    ProfileComponent,
+    ProjectComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +54,9 @@ import { SignupComponent } from './components/pages/signup/signup.component';
     }),
     HttpClientModule,
     FormsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule
 
   ],
   providers: [],

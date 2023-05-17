@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Project } from '../shared/models/Project';
 import { Observable } from 'rxjs';
-import { ADD_PROJECT, CATHEGORIES_URL, CATHEGORIE_URL, GET_IDEA_URL, PROJECTS_URL } from '../shared/models/constantes/urs';
+import { ADD_PROJECT, CATHEGORIES_URL, CATHEGORIE_URL, GET_IDEA_URL, PROJECTS_URL, PROJECT_URL } from '../shared/models/constantes/urs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -28,4 +28,7 @@ export class ProjectService {
    getIdea(){
     return this.http.get(GET_IDEA_URL);
    }
+  getProjectById(id:string){
+   return this.http.get(PROJECT_URL +id) ;
+  }
 }

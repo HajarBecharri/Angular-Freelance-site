@@ -3,7 +3,7 @@ import{BehaviorSubject,Observable, tap} from 'rxjs'
 import { Freelancer } from '../shared/models/Freelencer';
 import { IuserLogin } from '../shared/models/interfaces/IuserLogin';
 import {HttpClient} from '@angular/common/http'
-import { FREELANCER_LOGIN_URL } from '../shared/models/constantes/urs';
+import { FREELANCER_LOGIN_URL, FREELANCER_URL } from '../shared/models/constantes/urs';
 import { ToastrService } from 'ngx-toastr';
 
 const FREELANCER_KEY='freelancer'
@@ -20,7 +20,7 @@ export class FreelancerService {
 
 
   Login(userLogin:IuserLogin):Observable<Freelancer>{
-     
+
     return this.http.post<Freelancer>(FREELANCER_LOGIN_URL,userLogin).pipe(
       tap({
         next:(User)=>{
@@ -42,7 +42,7 @@ export class FreelancerService {
 
    private setFreelancerTolocalStorage(freelancer:Freelancer){
     localStorage.setItem(FREELANCER_KEY,JSON.stringify(freelancer));
-  
+
   }
 
    private getFreelancerFromLocalStorage():Freelancer{
@@ -56,6 +56,9 @@ export class FreelancerService {
     localStorage.removeItem(FREELANCER_KEY);
     //to refresh the page
     window.location.reload();
+  }
+  getFreelancer(freelacer:string){
+    return this.http.get(FREELANCER_URL+ freelacer);
   }
 }
 

@@ -7,6 +7,10 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { GetIdeaComponent } from './components/pages/get-idea/get-idea.component';
 import { AddProjectComponent } from './components/pages/add-project/add-project.component';
 import { SignupComponent } from './components/pages/signup/signup.component';
+import { DeashbordFreelancerComponent } from './components/pages/deashbord-freelancer/deashbord-freelancer.component';
+import { DeashbordClientComponent } from './components/pages/deashbord-client/deashbord-client.component';
+import { ProfileComponent } from './components/pages/profile/profile.component';
+import { ProjectComponent } from './components/pages/project/project.component';
 
 const routes: Routes = [
   {path:'login/:user',component:LoginPageComponent},
@@ -16,7 +20,11 @@ const routes: Routes = [
   {path : 'cathegorie/:cte',component:HomeComponent},
   {path:'get_idea' , component:GetIdeaComponent},
   {path:'add_project' , component:AddProjectComponent},
-  {path:'Register' , component:SignupComponent}
+  {path:'Register' , component:SignupComponent},
+  {path:'deashbordFreelencer' , component:DeashbordFreelancerComponent},
+  {path:'deashbordClient',component:DeashbordClientComponent},
+  {path: 'freelancer/:name' , component:ProfileComponent },
+  {path:'project/:id' , component:ProjectComponent}
 ];
 
 @NgModule({

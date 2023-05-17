@@ -1,0 +1,33 @@
+<div class="wrapper">
+  <div class="left">
+      <img [src]="freelancer.ImageUrl"
+      alt="user" width="100">
+      <h4>{{freelancer.name}}</h4>
+       <p>UI Developer</p>
+  </div>
+  <div class="right">
+      <div class="info">
+          <h3>Information</h3>
+          <div class="info_data">
+               <div class="data">
+                  <h4>Email</h4>
+                  <p>{{freelancer.email}}</p>
+               </div>
+               <div class="data">
+                 <h4>Phone</h4>
+                  <p>{{freelancer.phone}}</p>
+            </div>
+          </div>
+      </div>
+
+    <div class="projects">
+          <h3>Projects</h3>
+          <div class="projects_data" >
+               <div class="data">
+                  <h4>{{freelancer.project.description}}</h4>
+               </div>
+          </div>
+      </div>
+    </div>
+  </div>
+

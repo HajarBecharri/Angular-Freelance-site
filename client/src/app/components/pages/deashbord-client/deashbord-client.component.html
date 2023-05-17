@@ -1,0 +1,32 @@
+<section class="background">
+</section>
+<span>
+  <h1 style="font-size: 70px;">Get idea about our heros</h1></span>
+<ul class="container">
+  <li *ngFor="let project of projects">
+<mat-card class="mat-parent" style="width: 400px; height: 500px;">
+      <div class="carousel-inner" align="center" role="listbox">
+
+              <div class="carousel-item" style="display: block; width: 100%;">
+                  <div class="col-md-4">
+                      <mat-card class="example-card">
+                          <img mat-card-image [src] = "project.imageUrl" alt="Photo of a Shiba Inu" style="width: 400px; height: 300px;">
+                          <mat-card-content>
+                              <div class="card-body">
+                                  <h4 class="card-title">{{project.description}}</h4>
+                                  <p>{{project.period}}
+                                  </p>
+                                  <p>{{project.budjet}}
+                                  </p>
+                                  <p>Realiser par <a routerLink="/freelancer/{{project.freelancer}}">{{project.freelancer}}</a>
+                                  </p>
+                                  <button class="btnviewProject" mat-raised-button color="primary">Learn more</button>
+                              </div>
+                          </mat-card-content>
+                      </mat-card>
+                  </div>
+                  </div>
+    </div>
+</mat-card>
+  </li>
+</ul>

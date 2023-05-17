@@ -1,8 +1,107 @@
 export const sample_users: any[]=[
     {name:'ME',email:"me@gmail.com",password:1234,address:"Hassana",isAdmin:true},
     {name:'MOI',email:"moi@gmail.com",password:12345,address:"Hassana",isAdmin:true}
-    
     ]
+export const sample_freelacer : any[] = [
+  {name:'Hamid',email:"me@gmail.com",password:1234,address:"Hassana",isAdmin:true , ImageUrl:"assets/1.jpg" , phone:"682639927391" , 
+   project:
+    {
+      id:'1',
+      description: 'AI generated art.',
+      budjet: '$200',
+      period : '7 days',
+      cathegorie : 'modlign',
+      imageUrl : 'assets/1.jpg',
+      done: false, 
+      start:true ,
+      freelancer:"Hamid"
+    }
+},
+    {name:'Bouchta',email:"moi@gmail.com",password:12345,address:"Hassana",isAdmin:true , ImageUrl:"assets/1.jpg" , phone:"682639927391",
+    project:{
+      id:'1',
+      description: 'AI generated art.',
+      budjet: '$200',
+      period : '7 days',
+      cathegorie : 'modlign',
+      imageUrl : 'assets/1.jpg',
+      done: false, 
+      start:true ,
+      freelancer:"Hamid"
+    }},
+    {name:'Samira',email:"me@gmail.com",password:1234,address:"Hassana",isAdmin:true , ImageUrl:"assets/1.jpg" , phone:"682639927391" ,
+    project:{
+      id:'1',
+      description: 'AI generated art.',
+      budjet: '$200',
+      period : '7 days',
+      cathegorie : 'modlign',
+      imageUrl : 'assets/1.jpg',
+      done: false, 
+      start:true ,
+      freelancer:"Hamid"
+    }},
+    {name:'Souad',email:"moi@gmail.com",password:12345,address:"Hassana",isAdmin:true , ImageUrl:"assets/1.jpg" , phone:"682639927391",
+    project:{
+      id:'1',
+      description: 'AI generated art.',
+      budjet: '$200',
+      period : '7 days',
+      cathegorie : 'modlign',
+      imageUrl : 'assets/1.jpg',
+      done: false, 
+      start:true ,
+      freelancer:"Hamid"
+    }},
+    {name:'Fouad',email:"me@gmail.com",password:1234,address:"Hassana",isAdmin:true , ImageUrl:"assets/1.jpg" ,phone:"682639927391",
+    project:{
+      id:'1',
+      description: 'AI generated art.',
+      budjet: '$200',
+      period : '7 days',
+      cathegorie : 'modlign',
+      imageUrl : 'assets/1.jpg',
+      done: false, 
+      start:true ,
+      freelancer:"Hamid"
+    }},
+    {name:'sokaina',email:"moi@gmail.com",password:12345,address:"Hassana",isAdmin:true , ImageUrl:"assets/1.jpg" ,phone:"682639927391",
+    project:{
+      id:'1',
+      description: 'AI generated art.',
+      budjet: '$200',
+      period : '7 days',
+      cathegorie : 'modlign',
+      imageUrl : 'assets/1.jpg',
+      done: false, 
+      start:true ,
+      freelancer:"Hamid"
+    }},
+    {name:'Hamid',email:"me@gmail.com",password:1234,address:"Hassana",isAdmin:true , ImageUrl:"assets/1.jpg",phone:"682639927391",
+    project:{
+      id:'1',
+      description: 'AI generated art.',
+      budjet: '$200',
+      period : '7 days',
+      cathegorie : 'modlign',
+      imageUrl : 'assets/1.jpg',
+      done: false, 
+      start:true ,
+      freelancer:"Hamid"
+    }},
+    {name:'MOI',email:"moi@gmail.com",password:12345,address:"Hassana",isAdmin:true , ImageUrl:"assets/1.jpg" , phone:"682639927391",
+    project:{
+      id:'1',
+      description: 'AI generated art.',
+      budjet: '$200',
+      period : '7 days',
+      cathegorie : 'modlign',
+      imageUrl : 'assets/1.jpg',
+      done: false, 
+      start:true ,
+      freelancer:"Hamid"
+    }}
+]
     export const sample_project: any[] = [
         {
           id:'1',
@@ -11,7 +110,9 @@ export const sample_users: any[]=[
           period : '7 days',
           cathegorie : 'modlign',
           imageUrl : 'assets/1.jpg',
-          done: false 
+          done: false, 
+          start:true ,
+          freelancer:"Hamid"
         },
         {
           id:'2',
@@ -20,7 +121,9 @@ export const sample_users: any[]=[
           period : '1 day',
           cathegorie : 'modlign',
           imageUrl : 'assets/2.jpg',
-          done: true
+          done: true,
+          start:false ,
+          freelancer:"Bouchta"
         },
         {
           id:'3',
@@ -29,7 +132,9 @@ export const sample_users: any[]=[
           period : ' 7 days',
           cathegorie : 'modlign',
           imageUrl : 'assets/3.jpg',
-          done: false
+          done: false,
+          start:true,
+          freelancer:"Samira"
         },
         {
           id:'4',
@@ -38,7 +143,9 @@ export const sample_users: any[]=[
           period : ' 7 days',
           cathegorie : 'brandling',
           imageUrl : 'assets/4.jpg',
-          done: true
+          done: true,
+          start:true,
+          freelancer:"Souad"
         },
         {
           id:'5',
@@ -47,7 +154,9 @@ export const sample_users: any[]=[
           period : ' 7 days',
           cathegorie : 'graphic',
           imageUrl : 'assets/5.jpg',
-          done: false
+          done: false,
+          start:false ,
+          freelancer:"Fouad"
         },
         {
           id:'6',
@@ -56,7 +165,9 @@ export const sample_users: any[]=[
           period : ' 7 days',
           cathegorie : 'illustration',
           imageUrl : 'assets/6.jpg',
-          done: true
+          done: true,
+          start:true,
+          freelancer:"sokaina"
         },
         {
           id:'7',
@@ -65,7 +176,9 @@ export const sample_users: any[]=[
           period : ' 7 days',
           cathegorie : 'logoDesign',
           imageUrl : 'assets/7.jpg',
-          done: false
+          done: false,
+          start:false ,
+          freelancer:"samira"
         },
         {
           id:'8',
@@ -74,7 +187,9 @@ export const sample_users: any[]=[
           period : ' 7 days',
           cathegorie : 'mobile',
           imageUrl : 'assets/8.jpg',
-          done: true
+          done: true,
+          start:true,
+          freelancer:"Hamid"
         },
         {
           id:'9',
@@ -83,7 +198,9 @@ export const sample_users: any[]=[
           period : ' 7 days',
           cathegorie : 'packageDesign',
           imageUrl : 'assets/9.jpg',
-          done: false
+          done: false,
+          start:false ,
+          freelancer:"Hamid"
         },
         {
           id:'10',
@@ -92,24 +209,31 @@ export const sample_users: any[]=[
           period : ' 7 days',
           cathegorie : 'productDesign',
           imageUrl :'assets/9.jpg',
-          done: true
+          done: true,
+          start:false ,
+          freelancer:"Hamid"
+
         }, {
-          id:'9',
+          id:'11',
           description: 'Interior 3D model',
           budjet:'$350',
           period : ' 7 days',
           cathegorie : 'websiteDesign',
           imageUrl : 'assets/9.jpg',
-          done: false
+          done: false,
+          start:true,
+          freelancer:"Hamid"
         },
         {
-          id:'9',
+          id:'12',
           description: 'Interior 3D model',
           budjet:'$350',
           period : ' 7 days',
           cathegorie : 'modlign',
           imageUrl : 'assets/9.jpg',
-          done: true 
+          done: true ,
+          start:false ,
+          freelancer:"Hamid"
         }
       ]
 

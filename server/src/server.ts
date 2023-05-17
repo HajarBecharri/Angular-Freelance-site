@@ -2,7 +2,7 @@
 import express from "express";
 //we need it to have request from other port than 5000
 import cors from "cors";
-import { sample_cathegorie, sample_project, sample_users } from "./data";
+import { sample_cathegorie, sample_freelacer, sample_project, sample_users } from "./data";
 import jwt from "jsonwebtoken"
 
 
@@ -62,7 +62,7 @@ app.use(cors({
 }));
 
 app.get('/projects' , (req , res)=>{
-    res.send(sample_project);
+    res.send(sample_project.filter(item => item.done === false && item.start == false));
 });
 app.get('/cathegories' , (req,res)=>{
    res.send(sample_cathegorie);
@@ -70,16 +70,25 @@ app.get('/cathegories' , (req,res)=>{
 app.get('/cathegorie/:cte',(req , res)=>{
     const name = req.params.cte ; 
     const projects = sample_project.filter(item => item.cathegorie === name);
-     res.send(projects);
+     res.send(projects) ;
 });
 
 app.get('/get_idea' ,(req ,res)=>{
     const projects = sample_project.filter(item => item.done === true); 
     res.send(projects);
-    console.log(projects);
-})
+});
+app.get('/freelancer/:profile', (req ,res)=>{
+    const name = req.params.profile ;
+    const freelancer = sample_freelacer.find(item => item.name === name);
+    console.log(freelancer);
+    res.send(freelancer);
+});
+app.get('/project/:id',(req,res)=>{
+    const id = req.params.id ;
+    const project = sample_project.find(item => item.id === id);
+    res.send(project);
+})  
 const port =5000;
-
 app.listen(port,()=>{
     console.log("Website served on http://localhost:" +port);
 })

@@ -1,4 +1,6 @@
 import { Cathegorie } from "./Cathegorie";
+import { Client } from "./Client";
+import { Freelancer } from "./Freelencer";
 
 export class Project{
   id!:string;
@@ -7,5 +9,8 @@ export class Project{
   period!:string;
   cathegorie!:Cathegorie;
   imageUrl!:string;
-  done!:boolean
+  done!:boolean;
+  start!:boolean;
+  client!:Client;
+  freelancer!:Freelancer;
 }
