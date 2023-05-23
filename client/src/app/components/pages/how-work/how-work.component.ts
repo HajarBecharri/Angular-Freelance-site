@@ -9,9 +9,9 @@ import { freelancer_how, client_how } from '../../../data/data';
 export class HowWorkComponent {
   data:any[]=client_how;
   freelancer_bgcolor:string="#1E90FF"
-  client_bgcolor:string="#1E90FF"
+  client_bgcolor:string="white"
   freelancer_color:string="black"
-  client_color:string="black"
+  client_color:string="#1E90FF"
 
 
 Freelancer_choice(){

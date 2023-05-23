@@ -11,6 +11,10 @@ import { DeashbordFreelancerComponent } from './components/pages/deashbord-freel
 import { DeashbordClientComponent } from './components/pages/deashbord-client/deashbord-client.component';
 import { ProfileComponent } from './components/pages/profile/profile.component';
 import { ProjectComponent } from './components/pages/project/project.component';
+import { CompleteMyProfileComponent } from './components/pages/complete-my-profile/complete-my-profile.component';
+import { ImboxFreelancerComponent } from './components/pages/imbox-freelancer/imbox-freelancer.component';
+import { ImboxClientComponent } from './components/pages/imbox-client/imbox-client.component';
+
 
 const routes: Routes = [
   {path:'login/:user',component:LoginPageComponent},
@@ -24,7 +28,10 @@ const routes: Routes = [
   {path:'deashbordFreelencer' , component:DeashbordFreelancerComponent},
   {path:'deashbordClient',component:DeashbordClientComponent},
   {path: 'freelancer/:name' , component:ProfileComponent },
-  {path:'project/:id' , component:ProjectComponent}
+  {path:'project/:id' , component:ProjectComponent},
+  {path:'complete',component:CompleteMyProfileComponent},
+  {path:'project/imbox/freelancer' , component:ImboxFreelancerComponent},
+  {path:'project/imbox/client' , component:ImboxClientComponent},
 ];
 
 @NgModule({

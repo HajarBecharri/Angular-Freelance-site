@@ -5,7 +5,10 @@
         <nav>
             <ul>
                 <li >
-                    <li *ngIf="!user.token && !user.token" class="menu-container">
+                    <li *ngIf="!userf.token && !userc.token" >
+                        <a routerLink="/" class="logo">home</a>   
+                    </li>
+                    <li *ngIf="!userf.token && !userc.token" class="menu-container">
                     <a routerLink="/login" class="logo">login</a>
                     <div class="menu">
                         <a routerLink="/login/freelancer">Freelancer</a>
@@ -14,7 +17,7 @@
                     </div>
                     </li>
 
-                <li *ngIf="!user.token" >
+                <li *ngIf="!userf.token && !userc.token" >
                     <a routerLink="/Register" class="logo">Sign UP</a>
                 </li>
 
@@ -24,20 +27,25 @@
                     <div class="menu">
                         <a routerLink="/about">about</a>
                         <a routerLink="/how-work">how it work</a>
-                        <a *ngIf="user.token" (click)="logout()">logout</a>
+                        <a *ngIf="userf.token || userc.token"(click)="logout()">logout</a>
                     </div>
                 </li>
-                <li *ngIf="user.token" >
-                    <a routerLink="profil" class="logo">{{user.email}}</a>
+                <li *ngIf="userf.token || userc.token" >
+                    <a *ngIf="userf.token" routerLink="profil" class="logo">{{userf.status}}:{{userf.email}}</a>
+                    <a *ngIf="userc.token" routerLink="profil" class="logo">{{userc.status}}:{{userc.email}}</a>
                 </li>
                 <div class="box">
-                    <a routerLink="/add_project">add project</a>
+                    <a *ngIf="userc.token" routerLink="/add_project">add project</a>
                 </div>
                 <div class="box">
                   <a routerLink="/get_idea">Get idea</a>
               </div>
+              
             </ul>
         </nav>
     </div>
 </header>
+<span *ngIf="userf.token || userc.token ">
+<app-susheader></app-susheader>
+</span>
 

@@ -1,4 +1,6 @@
-<div class="wrapper">
+<app-not-found resetLinkText="Go To
+Homepage"  [visible]="!userc.token && !userf.token"></app-not-found>
+<div class="wrapper" *ngIf="userf.token || userc.token">
   <div class="left">
       <img [src]="freelancer.ImageUrl"
       alt="user" width="100">

@@ -4,10 +4,13 @@ import express from "express";
 import cors from "cors";
 import { sample_cathegorie, sample_freelacer, sample_project, sample_users } from "./data";
 import jwt from "jsonwebtoken"
-
-
-
-
+import { dbconnect } from "./configs/database.config";
+import asynceHandler from 'express-async-handler'
+import { ClientModel } from "./models/client.model";
+import { FreelancerModel } from "./models/freelancer.model";
+import { ProjectModel } from "./models/project.model";
+import { CathegorieModel } from "./models/cathegorie.model";
+dbconnect()
 
 const app=express();
 app.use(express.json());
@@ -17,7 +20,19 @@ app.use(cors({
     origin:["http://localhost:4200"]
 }));
 //to send body to the server we use post 
-
+app.get("/seed",asynceHandler(
+    async(req,res)=>{
+        const cath= await CathegorieModel.findById('646d16e7e47085fbfffa1246') 
+        const user= await ClientModel.findById('646d0065c660a4596ed1dbe8') 
+        const projectCount=await ProjectModel.countDocuments();
+        if(projectCount>0){
+            res.send(" already done")
+            return;
+        }
+        await ProjectModel.create({description:'bla bla', budjet:'1000$',period:'3j',client_id:user?._id,cathegorie_id:cath?._id})
+        res.send("done")
+    }
+))
 app.post("/freelancer/login",(req,res)=>{
     const {email,password}=req.body;
     const freelancer=sample_users.find(user=>user.email===email&&

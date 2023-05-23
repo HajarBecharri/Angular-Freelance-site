@@ -1,6 +1,6 @@
 export const sample_users: any[]=[
-    {name:'ME',email:"me@gmail.com",password:1234,address:"Hassana",isAdmin:true},
-    {name:'MOI',email:"moi@gmail.com",password:12345,address:"Hassana",isAdmin:true}
+    {email:"me@gmail.com",password:1234,isAdmin:true},
+    {email:"moi@gmail.com",password:12345,isAdmin:true}
     ]
 export const sample_freelacer : any[] = [
   {name:'Hamid',email:"me@gmail.com",password:1234,address:"Hassana",isAdmin:true , ImageUrl:"assets/1.jpg" , phone:"682639927391" , 
@@ -30,16 +30,17 @@ export const sample_freelacer : any[] = [
       freelancer:"Hamid"
     }},
     {name:'Samira',email:"me@gmail.com",password:1234,address:"Hassana",isAdmin:true , ImageUrl:"assets/1.jpg" , phone:"682639927391" ,
+    
     project:{
       id:'1',
       description: 'AI generated art.',
       budjet: '$200',
       period : '7 days',
-      cathegorie : 'modlign',
+      //cathegorie : 'modlign',
       imageUrl : 'assets/1.jpg',
       done: false, 
       start:true ,
-      freelancer:"Hamid"
+      freelancer_id:'646d0065c660a4596ed1dbe8'
     }},
     {name:'Souad',email:"moi@gmail.com",password:12345,address:"Hassana",isAdmin:true , ImageUrl:"assets/1.jpg" , phone:"682639927391",
     project:{
@@ -278,5 +279,7 @@ export const sample_freelacer : any[] = [
           id:'10',
           name:'brandling'
         }
-      ]     
+      ]  
+      
+      
       

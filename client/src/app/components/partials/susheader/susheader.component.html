@@ -1,0 +1,33 @@
+<mat-toolbar color="">
+    <button [matMenuTriggerFor]="menu" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon style="color: blue;">menu</mat-icon>
+    </button>
+    <mat-menu  #menu="matMenu" >
+      
+        <button (click)="about()" mat-fab extended color="primary">
+          <mat-icon>insert_emoticon</mat-icon>
+          about Us
+        </button>
+      
+      <button (click)="getStarted()" mat-fab extended>
+        <mat-icon>accessibility</mat-icon>
+        get started
+      </button>
+      </mat-menu>
+    <span style="color: black;font-size: 1rem;font-weight: bold;">near |</span>
+    <span class="example-spacer"></span>
+    <button (click)="deashbord()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon style="color: rgb(241, 10, 10);">favorite</mat-icon>
+      
+    </button>
+    <button  (click)="imbox()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon style="color: blue;">history</mat-icon>
+      
+      
+    </button>
+    <button (click)="openCompleteProfileForm()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon style="color: rgb(95, 218, 132);">edit square</mat-icon>
+        
+        
+      </button>
+  </mat-toolbar>
