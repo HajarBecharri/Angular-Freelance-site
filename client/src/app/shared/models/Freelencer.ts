@@ -7,6 +7,7 @@ export class Freelancer {
     token!:string;
     isAdmin!:boolean;
     phone!:string;
-    status!:string;
     address!:string;
+    project!:Project;
+    ImageUrl!:string;
 }

@@ -4,7 +4,6 @@ export class Client {
     name!:string;
     token!:string;
     isAdmin!:boolean;
-    status!:string;
     address!:string;
 
 }

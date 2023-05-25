@@ -33,44 +33,43 @@ app.get("/seed",asynceHandler(
         res.send("done")
     }
 ))
-app.post("/freelancer/login",(req,res)=>{
+app.post("/freelancer/login",asynceHandler(async(req,res)=>{
     const {email,password}=req.body;
-    const freelancer=sample_users.find(user=>user.email===email&&
-        user.password==password)
+    const freelancer=await FreelancerModel.findOne({email,password})
+    console.log(freelancer)
 
     if(freelancer){
-        res.send(generateTokenResponce(freelancer));
+        res.send(generateTokenResponse(freelancer));
+        console.log(freelancer)
     }
     else{
         res.status(400).send("Username or password is invalid")
     }
 
-})
-app.post("/client/login",(req,res)=>{
+}
+))
+app.post("/client/login",asynceHandler(async(req,res)=>{
     const {email,password}=req.body;
-    const client=sample_users.find(user=>user.email===email&&
-        user.password==password)
+    const client=await ClientModel.findOne({email,password})
 
     if(client){
-        res.send(generateTokenResponce(client));
+        res.send(generateTokenResponse(client));
     }
     else{
         res.status(400).send("Username or password is invalid")
     }
 
-})
+}))
 
 //to generate the token
-const generateTokenResponce=(user:any)=>{
-    const token = jwt.sign({
-        email:user.email,isAdmin:user.isAdmin},"Something",{
-            expiresIn:"30d"
-
-        });
+const generateTokenResponse= (user:any)=>{
+    const token=jwt.sign({
+     email:user.email,isAdmin:user.isAdmin
+    },"sommeRandomText",{expiresIn:"30d"});
     user.token=token;
-    return user;
-    
-}
+    console.log(token)
+    return user;}
+
 app.use(cors({
     credentials:true,
     origin:["http://localhost:4200"]

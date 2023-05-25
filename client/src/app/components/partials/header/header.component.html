@@ -21,7 +21,10 @@
                     <a routerLink="/Register" class="logo">Sign UP</a>
                 </li>
 
-
+                <li  *ngIf="userf.token || userc.token" >
+                    <a *ngIf="userf.token" routerLink="profil" class="logo">Welcome Freelancer:{{userf.email}}</a>
+                    <a *ngIf="userc.token" routerLink="profil" class="logo">Welcome Client:{{userc.email}}</a>
+                </li>
                 <li class="menu-container">
                     <a routerLink="/dashboard">Guid</a>
                     <div class="menu">
@@ -30,10 +33,7 @@
                         <a *ngIf="userf.token || userc.token"(click)="logout()">logout</a>
                     </div>
                 </li>
-                <li *ngIf="userf.token || userc.token" >
-                    <a *ngIf="userf.token" routerLink="profil" class="logo">{{userf.status}}:{{userf.email}}</a>
-                    <a *ngIf="userc.token" routerLink="profil" class="logo">{{userc.status}}:{{userc.email}}</a>
-                </li>
+                
                 <div class="box">
                     <a *ngIf="userc.token" routerLink="/add_project">add project</a>
                 </div>
