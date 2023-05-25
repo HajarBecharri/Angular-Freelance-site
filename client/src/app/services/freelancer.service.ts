@@ -3,8 +3,9 @@ import{BehaviorSubject,Observable, tap} from 'rxjs'
 import { Freelancer } from '../shared/models/Freelencer';
 import { IuserLogin } from '../shared/models/interfaces/IuserLogin';
 import {HttpClient} from '@angular/common/http'
-import { FREELANCER_LOGIN_URL, FREELANCER_URL } from '../shared/models/constantes/urs';
+import { FREELANCER_LOGIN_URL, FREELANCER_REGISTER_URL, FREELANCER_URL } from '../shared/models/constantes/urs';
 import { ToastrService } from 'ngx-toastr';
+import { IuserRegister } from '../shared/models/interfaces/IuserRegister';
 
 const FREELANCER_KEY='freelancer'
 @Injectable({
@@ -60,6 +61,25 @@ export class FreelancerService {
   getFreelancer(freelacer:string){
     return this.http.get(FREELANCER_URL+ freelacer);
   }
+
+  register(freelancerRegister:IuserRegister){
+    return this.http.post(FREELANCER_REGISTER_URL,freelancerRegister).pipe(
+      tap({
+        next:(User:any)=>{
+      this.setFreelancerTolocalStorage(User);
+      this.freelancerSubject.next(User);
+      this.toastrService.success(
+        `Welcome to Freelancer ${User.email}`,
+        'Sign up succefull'
+      )
+        },
+        error:(errorResponce)=>{
+          this.toastrService.error(errorResponce.error,'Sign up echoiee')
+        }
+      })
+    )
+
 }
 
+}
 

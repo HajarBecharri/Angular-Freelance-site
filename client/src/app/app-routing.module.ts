@@ -32,6 +32,7 @@ const routes: Routes = [
   {path:'complete',component:CompleteMyProfileComponent},
   {path:'project/imbox/freelancer' , component:ImboxFreelancerComponent},
   {path:'project/imbox/client' , component:ImboxClientComponent},
+  {path:'Register/:user',component:SignupComponent}
 ];
 
 @NgModule({

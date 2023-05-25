@@ -17,3 +17,8 @@ export const FREELANCER_URL = BASE_URL + '/freelancer/';
 
 
 export const PROJECT_URL = BASE_URL + '/project/' ;
+
+
+export const FREELANCER_REGISTER_URL = BASE_URL + '/register/Freelancer';
+
+export const CLIENT_REGISTER_URL = BASE_URL + '/register/Client'

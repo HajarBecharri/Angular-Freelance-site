@@ -3,8 +3,9 @@ import{BehaviorSubject,Observable, tap} from 'rxjs'
 import { Client } from '../shared/models/Client';
 import { IuserLogin } from '../shared/models/interfaces/IuserLogin';
 import {HttpClient} from '@angular/common/http'
-import { CLIENT_LOGIN_URL } from '../shared/models/constantes/urs';
+import { CLIENT_LOGIN_URL, CLIENT_REGISTER_URL } from '../shared/models/constantes/urs';
 import { ToastrService } from 'ngx-toastr';
+import { IuserRegister } from '../shared/models/interfaces/IuserRegister';
 
 const CLIENT_KEY='client'
 @Injectable({
@@ -19,7 +20,7 @@ export class ClientService {
 
 
   Login(userLogin:IuserLogin):Observable<Client>{
-     
+
    return this.http.post<Client>(CLIENT_LOGIN_URL,userLogin).pipe(
     tap({
       next:(user)=>{
@@ -42,7 +43,7 @@ export class ClientService {
 
    private setclienttolocalstorage(freelancer:Client){
     localStorage.setItem(CLIENT_KEY,JSON.stringify(freelancer))
-           
+
    }
 
    private getclientFromLocalStorage():Client{
@@ -58,6 +59,24 @@ export class ClientService {
     //to refresh the page
     window.location.reload();
   }
+  register(clientRegister:IuserRegister){
+    return this.http.post(CLIENT_REGISTER_URL,clientRegister).pipe(
+      tap({
+        next:(User:any)=>{
+      this.setclienttolocalstorage(User);
+      this.clientSubject.next(User);
+      this.toastrService.success(
+        `Welcome to Freelancer ${User.email}`,
+        'Sign up succefull'
+      )
+        },
+        error:(errorResponce)=>{
+          this.toastrService.error(errorResponce.error,'Sign up echoiee')
+        }
+      })
+    )
+
+}
 }
 
 

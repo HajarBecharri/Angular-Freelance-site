@@ -1,14 +1,14 @@
 import { Schema, model } from "mongoose";
 
 export interface Client{
-    id:string;
-    email:string;
-    name:string;
+    id:String;
+    email:String;
+    name?:String;
     isAdmin:boolean;
-    address:string;
-    phone:string;
-    password:string;
-    token:string;
+    address?:String;
+    phone?:String;
+    password:String;
+    token?:String;
 }   
 
 export const ClientSchema =new Schema<Client>(

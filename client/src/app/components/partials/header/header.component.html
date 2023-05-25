@@ -6,19 +6,22 @@
             <ul>
                 <li >
                     <li *ngIf="!userf.token && !userc.token" >
-                        <a routerLink="/" class="logo">home</a>   
+                        <a routerLink="/" class="logo">home</a>
                     </li>
                     <li *ngIf="!userf.token && !userc.token" class="menu-container">
                     <a routerLink="/login" class="logo">login</a>
                     <div class="menu">
                         <a routerLink="/login/freelancer">Freelancer</a>
                         <a routerLink="/login/client">Client</a>
-
                     </div>
                     </li>
 
-                <li *ngIf="!userf.token && !userc.token" >
+                <li *ngIf="!userf.token && !userc.token"  class="menu-container" >
                     <a routerLink="/Register" class="logo">Sign UP</a>
+                    <div class="menu">
+                      <a routerLink="/Register/freelancer">Freelancer</a>
+                      <a routerLink="/Register/client">Client</a>
+                  </div>
                 </li>
 
                 <li  *ngIf="userf.token || userc.token" >
@@ -33,14 +36,14 @@
                         <a *ngIf="userf.token || userc.token"(click)="logout()">logout</a>
                     </div>
                 </li>
-                
+
                 <div class="box">
                     <a *ngIf="userc.token" routerLink="/add_project">add project</a>
                 </div>
                 <div class="box">
                   <a routerLink="/get_idea">Get idea</a>
               </div>
-              
+
             </ul>
         </nav>
     </div>

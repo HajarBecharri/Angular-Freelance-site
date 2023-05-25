@@ -3,7 +3,7 @@ header{
     position: relative;
     background: rgb(3, 2, 2);
     padding: 0;
-    
+
 }
 
 a{
@@ -16,8 +16,8 @@ a:hover{
     opacity: 1;
     cursor: pointer;
     border-radius: 2px;
-    
-    
+
+
 }
 
 .container {
@@ -43,7 +43,7 @@ ul a{
 }
 
 a span {
-    
+
     color: white;
     padding: 0.1 rem 0.45 rem;
     border-radius: 100rem;

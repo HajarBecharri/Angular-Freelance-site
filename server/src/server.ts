@@ -6,10 +6,11 @@ import { sample_cathegorie, sample_freelacer, sample_project, sample_users } fro
 import jwt from "jsonwebtoken"
 import { dbconnect } from "./configs/database.config";
 import asynceHandler from 'express-async-handler'
-import { ClientModel } from "./models/client.model";
-import { FreelancerModel } from "./models/freelancer.model";
+import { Client, ClientModel } from "./models/client.model";
+import { Freelancer, FreelancerModel } from "./models/freelancer.model";
 import { ProjectModel } from "./models/project.model";
 import { CathegorieModel } from "./models/cathegorie.model";
+import bcrypt from 'bcryptjs'
 dbconnect()
 
 const app=express();
@@ -102,7 +103,50 @@ app.get('/project/:id',(req,res)=>{
     const project = sample_project.find(item => item.id === id);
     res.send(project);
 })  
-const port =5000;
+
+app.post('/register/Freelancer',asynceHandler(
+    async(req , res)=>{
+        const email  = req.body.email;
+       const freelancer = await FreelancerModel.findOne({email});
+       if(freelancer){
+        res.status(400).send('User is already exist , please login ');
+        return;
+       } 
+       const password = req.body.password
+    const encryptedPassword = await bcrypt.hash(password,10);
+       const newFrelancer:Freelancer = {
+        id : '',
+        email,
+        password : encryptedPassword ,
+        isAdmin : false
+          }
+          const dbFreelancer = await FreelancerModel.create(newFrelancer);
+          res.send(generateTokenResponse(dbFreelancer));
+    }
+))
+app.post('/register/Client',asynceHandler(
+    async(req,res)=>{
+    const {email , password} = req.body;
+    const client = await ClientModel.findOne({email});
+        if(client){
+            res.status(400).send('User is already exist , please login ');
+            return;
+        }
+    const encryptedPassword = await bcrypt.hash(password,10);
+    const newClient:Client = {
+        id:'',
+        email,
+        password:encryptedPassword,
+        isAdmin:false
+    }
+    const dbClinet = await ClientModel.create(newClient);
+    res.send(generateTokenResponse(dbClinet));
+    }
+))
+
+
+const port =8000;
 app.listen(port,()=>{
     console.log("Website served on http://localhost:" +port);
 })
+
