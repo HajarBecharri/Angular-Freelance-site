@@ -60,15 +60,11 @@ export class ClientService {
     window.location.reload();
   }
   register(clientRegister:IuserRegister){
+    console.log('hello');
     return this.http.post(CLIENT_REGISTER_URL,clientRegister).pipe(
       tap({
         next:(User:any)=>{
       this.setclienttolocalstorage(User);
-      this.clientSubject.next(User);
-      this.toastrService.success(
-        `Welcome to Freelancer ${User.email}`,
-        'Sign up succefull'
-      )
         },
         error:(errorResponce)=>{
           this.toastrService.error(errorResponce.error,'Sign up echoiee')

@@ -3,15 +3,14 @@
       <h2 style="color:1E90FF;">
           Sign In
       </h2>
-      <form >
+      <form  [formGroup]="registerForm" (ngSubmit)="submit()"  >
       <div class="inputBox">
-          <label for="">email</label>
-          <input type="email">
+          <label >email</label>
+          <input type="email" formControlName="email">
       </div>
       <div class="inputBox">
-          <label for="">password</label>
+          <label >password</label>
           <input type="password" formControlName="password">
-
       </div>
       <button type="submit">Submit</button>
       <div class="links">

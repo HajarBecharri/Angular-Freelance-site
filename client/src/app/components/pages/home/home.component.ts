@@ -17,16 +17,16 @@ export class HomeComponent  implements OnInit{
   constructor(private projectservices:ProjectService , private activatedRoute:ActivatedRoute){
     let projectObsevable , cathegorieObservable : Observable<any> ;
     activatedRoute.params.subscribe((param)=>{
-      if(param['cte']){
-      projectObsevable =   this.projectservices.getAllFoodsBycathegorie(param['cte']);
+      if(param['id']){
+      projectObsevable =   this.projectservices.getAllFoodsBycathegorieId(param['id']);
     }
       else{
       projectObsevable  =   this.projectservices.getAll();
     }
-
     cathegorieObservable = this.projectservices.getAllCathegorie();
       projectObsevable.subscribe(serverprojects=>{
         this.projects = serverprojects ;
+        console.log(this.projects);
       })
       cathegorieObservable.subscribe(serverCathegories=>{
         this.cathegories = serverCathegories;

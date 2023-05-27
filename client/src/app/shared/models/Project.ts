@@ -7,10 +7,10 @@ export class Project{
   description!:string;
   budjet!:string;
   period!:string;
-  cathegorie!:Cathegorie;
+  cathegorie_id!:Cathegorie;
   imageUrl!:string;
   done!:boolean;
   start!:boolean;
-  client!:Client;
+  client_id!:Client;
   freelancer!:Freelancer;
 }

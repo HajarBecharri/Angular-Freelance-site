@@ -21,15 +21,14 @@ export class ProfileComponent{
   this.userf=newFreelancer)
   clientservices.clientObservable.subscribe((newClient)=>
   this.userc=newClient)
-  
+
   let freelancerObsevable : Observable<any> ;
     activatedRoute.params.subscribe((param)=>{
-      freelancerObsevable =   this.freelancerServices.getFreelancer(param['name']);
+      freelancerObsevable =   this.freelancerServices.getFreelancer(param['id']);
     freelancerObsevable.subscribe(serverfreelancer=>{
       this.freelancer = serverfreelancer ;
       console.log(this.freelancer.project);
     })
-
   })
 }
 }

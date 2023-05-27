@@ -63,15 +63,11 @@ export class FreelancerService {
   }
 
   register(freelancerRegister:IuserRegister){
+    console.log('hello free');
     return this.http.post(FREELANCER_REGISTER_URL,freelancerRegister).pipe(
       tap({
         next:(User:any)=>{
       this.setFreelancerTolocalStorage(User);
-      this.freelancerSubject.next(User);
-      this.toastrService.success(
-        `Welcome to Freelancer ${User.email}`,
-        'Sign up succefull'
-      )
         },
         error:(errorResponce)=>{
           this.toastrService.error(errorResponce.error,'Sign up echoiee')

@@ -8,9 +8,26 @@ import { dbconnect } from "./configs/database.config";
 import asynceHandler from 'express-async-handler'
 import { Client, ClientModel } from "./models/client.model";
 import { Freelancer, FreelancerModel } from "./models/freelancer.model";
-import { ProjectModel } from "./models/project.model";
+import { Project, ProjectModel } from "./models/project.model";
 import { CathegorieModel } from "./models/cathegorie.model";
 import bcrypt from 'bcryptjs'
+const path = require('path');
+
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+    destination: (req: any, file: any, cb:any ) => {
+      cb(null, 'C:/project_web2/freelance/client/src/assets'); 
+    },
+    filename: (req: any, file:any, cb:any )=> {
+      console.log(file);
+      const filename = file.originalname;
+      cb(null,filename);
+    }
+  });
+
+  const upload = multer({ storage });
+
 dbconnect()
 
 const app=express();
@@ -75,34 +92,47 @@ app.use(cors({
     credentials:true,
     origin:["http://localhost:4200"]
 }));
+app.get('/projects' , asynceHandler(
+    async(req,res)=>{
+ const projects = await ProjectModel.find({start:false , done:false}).populate('cathegorie_id');
+    res.send(projects)
+    }
+));
+app.get('/cathegories' , asynceHandler(
+    async(req ,res)=>{
 
-app.get('/projects' , (req , res)=>{
-    res.send(sample_project.filter(item => item.done === false && item.start == false));
-});
-app.get('/cathegories' , (req,res)=>{
-   res.send(sample_cathegorie);
-})
-app.get('/cathegorie/:cte',(req , res)=>{
-    const name = req.params.cte ; 
-    const projects = sample_project.filter(item => item.cathegorie === name);
-     res.send(projects) ;
-});
+    const cathegories = await CathegorieModel.find();
 
-app.get('/get_idea' ,(req ,res)=>{
-    const projects = sample_project.filter(item => item.done === true); 
-    res.send(projects);
-});
-app.get('/freelancer/:profile', (req ,res)=>{
-    const name = req.params.profile ;
-    const freelancer = sample_freelacer.find(item => item.name === name);
+     res.send(cathegories);
+    }
+));
+app.get('/cathegorie/:id',asynceHandler(
+    async(req,res)=>{
+        const id = req.params.id ; 
+        const projects = await ProjectModel.find({cathegorie_id : id , start:false , done:false}).populate('cathegorie_id')
+        res.send(projects) ;
+    }
+));
+app.get('/get_idea' ,asynceHandler(
+    async(req , res)=>{
+    const projects = await ProjectModel.find({done:true}).populate('cathegorie_id');
+    res.send(projects)
+    }
+));
+app.get('/freelancer/:id',asynceHandler(async(req ,res)=>{
+    const id = req.params.id ;
+    const freelancer = await FreelancerModel.findOne({_id:id})
+    // const freelancer = sample_freelacer.find(item => item.name === name);
     console.log(freelancer);
     res.send(freelancer);
-});
-app.get('/project/:id',(req,res)=>{
-    const id = req.params.id ;
-    const project = sample_project.find(item => item.id === id);
-    res.send(project);
-})  
+}));
+app.get('/project/:id',asynceHandler(
+    async(req,res)=>{
+        const id = req.params.id ;
+        const project = await ProjectModel.findOne({_id:id}).populate('cathegorie_id');
+        res.send(project);
+    }
+));  
 
 app.post('/register/Freelancer',asynceHandler(
     async(req , res)=>{
@@ -144,8 +174,26 @@ app.post('/register/Client',asynceHandler(
     }
 ))
 
+app.post('/addProject',upload.single('imageFile') ,async(req ,res)=>{
+        const newProject:Project = {
+         id : '',
+         description: req.body.description,
+         budjet: req.body.budjet,
+         period: req.body.period,
+         cathegorie_id: req.body.cathegorieId,
+         client_id: req.body.clientId,
+         imageUrl: req.body.imageUrl 
+        }
+        const dbProject = await ProjectModel.create(newProject);
+        const cthegorie = await CathegorieModel.findByIdAndUpdate(dbProject.cathegorie_id,{
+            $push:{projects:dbProject.id}
+        })
 
-const port =8000;
+        res.send("Project saved");
+    }
+)
+
+const port =5000;
 app.listen(port,()=>{
     console.log("Website served on http://localhost:" +port);
 })
