@@ -20,18 +20,19 @@ const routes: Routes = [
   {path:'about',component:AboutComponent},
   {path:'how-work',component:HowWorkComponent},
   {path:'' ,component:HomeComponent},
-  {path : 'cathegorie/:cte',component:HomeComponent},
+  {path : 'cathegorie/:id',component:HomeComponent},
   {path:'get_idea' , component:GetIdeaComponent},
   {path:'add_project' , component:AddProjectComponent},
   {path:'Register' , component:SignupComponent},
   {path:'deashbordFreelencer' , component:DeashbordFreelancerComponent},
   {path:'deashbordClient',component:DeashbordClientComponent},
-  {path: 'freelancer/:name' , component:ProfileComponent },
+  {path: 'freelancer/:id' , component:ProfileComponent },
   {path:'project/:id' , component:ProjectComponent},
   {path:'complete',component:CompleteMyProfileComponent},
   {path:'project/imbox/freelancer' , component:ImboxFreelancerComponent},
   {path:'project/imbox/client' , component:ImboxClientComponent},
   {path:'freelancerGmail/:id_project' , component:FreelancerGmailComponent},
+  {path:'Register/:user',component:SignupComponent}
 ];
 
 @NgModule({

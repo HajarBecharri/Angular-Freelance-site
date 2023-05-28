@@ -10,7 +10,7 @@
         <a routerLink="/cathegorie/all">All</a>
       </li>
     <li  class="menu-container"  *ngFor="let cathegorie of cathegories">
-      <a routerLink ="/cathegorie/{{cathegorie.name}}">{{cathegorie.name}}</a>
+      <a routerLink ="/cathegorie/{{cathegorie.id}}">{{cathegorie.name}}</a>
     </li>
   </ul>
  </nav>
@@ -20,7 +20,7 @@
       <div class="card">
           <div class="face face1">
               <div class="content">
-                  <img [src] = "project.imageUrl" width="600px" height="100px">
+                  <img src = "assets/{{project.imageUrl}}" width="600px" height="100px">
                   <h3>{{project.description}}</h3>
               </div>
           </div>
@@ -28,7 +28,7 @@
               <div class="content">
                   <p>{{project.period}}</p>
                   <p>{{project.budjet}}</p>
-                     <a routerLink = "/cathegorie/{{project.cathegorie}}">Read More</a>
+                     <a routerLink = "/cathegorie/{{project.cathegorie_id.id}}">Read More</a>
               </div>
           </div>
       </div>

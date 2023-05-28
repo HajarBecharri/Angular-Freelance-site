@@ -6,13 +6,17 @@ import { sample_cathegorie, sample_freelacer, sample_project, sample_users } fro
 import jwt from "jsonwebtoken"
 import { dbconnect } from "./configs/database.config";
 import asynceHandler from 'express-async-handler'
-import { ClientModel } from "./models/client.model";
-import { FreelancerModel } from "./models/freelancer.model";
-import { ProjectModel } from "./models/project.model";
+import { Client, ClientModel } from "./models/client.model";
+import { Freelancer, FreelancerModel } from "./models/freelancer.model";
+import { Project, ProjectModel } from "./models/project.model";
 import { CathegorieModel } from "./models/cathegorie.model";
-import bcrypt from 'bcryptjs';
 import { MessagerieClientModel } from "./models/message.client.model";
 import { MessagerieFreelancerModel } from "./models/message.freelancer.model";
+import bcrypt from 'bcryptjs'
+const path = require('path');
+
+
+
 dbconnect()
 
 const app=express();
@@ -236,35 +240,92 @@ app.use(cors({
     credentials:true,
     origin:["http://localhost:4200"]
 }));
+app.get('/projects' , asynceHandler(
+    async(req,res)=>{
+ const projects = await ProjectModel.find({start:false , done:false}).populate('cathegorie_id');
+    res.send(projects)
+    }
+));
+app.get('/cathegories' , asynceHandler(
+    async(req ,res)=>{
 
-app.get('/projects' , (req , res)=>{
-    res.send(sample_project.filter(item => item.done === false && item.start == false));
-});
-app.get('/cathegories' , (req,res)=>{
-   res.send(sample_cathegorie);
-})
-app.get('/cathegorie/:cte',(req , res)=>{
-    const name = req.params.cte ; 
-    const projects = sample_project.filter(item => item.cathegorie === name);
-     res.send(projects) ;
-});
+    const cathegories = await CathegorieModel.find();
 
-app.get('/get_idea' ,(req ,res)=>{
-    const projects = sample_project.filter(item => item.done === true); 
-    res.send(projects);
-});
-app.get('/freelancer/:profile', (req ,res)=>{
-    const name = req.params.profile ;
-    const freelancer = sample_freelacer.find(item => item.name === name);
+     res.send(cathegories);
+    }
+));
+app.get('/cathegorie/:id',asynceHandler(
+    async(req,res)=>{
+        const id = req.params.id ; 
+        const projects = await ProjectModel.find({cathegorie_id : id , start:false , done:false}).populate('cathegorie_id')
+        res.send(projects) ;
+    }
+));
+app.get('/get_idea' ,asynceHandler(
+    async(req , res)=>{
+    const projects = await ProjectModel.find({done:true}).populate('cathegorie_id');
+    res.send(projects)
+    }
+));
+app.get('/freelancer/:id',asynceHandler(async(req ,res)=>{
+    const id = req.params.id ;
+    const freelancer = await FreelancerModel.findOne({_id:id})
+    // const freelancer = sample_freelacer.find(item => item.name === name);
     console.log(freelancer);
     res.send(freelancer);
-});
-app.get('/project/:id',(req,res)=>{
-    const id = req.params.id ;
-    const project = sample_project.find(item => item.id === id);
-    res.send(project);
-})  
+}));
+app.get('/project/:id',asynceHandler(
+    async(req,res)=>{
+        const id = req.params.id ;
+        const project = await ProjectModel.findOne({_id:id}).populate('cathegorie_id');
+        res.send(project);
+    }
+));  
+
+app.post('/register/Freelancer',asynceHandler(
+    async(req , res)=>{
+        const email  = req.body.email;
+       const freelancer = await FreelancerModel.findOne({email});
+       if(freelancer){
+        res.status(400).send('User is already exist , please login ');
+        return;
+       } 
+       const password = req.body.password
+    const encryptedPassword = await bcrypt.hash(password,10);
+       const newFrelancer:Freelancer = {
+        id : '',
+        email,
+        password : encryptedPassword ,
+        isAdmin : false
+          }
+          const dbFreelancer = await FreelancerModel.create(newFrelancer);
+          res.send(generateTokenResponse(dbFreelancer));
+    }
+))
+app.post('/register/Client',asynceHandler(
+    async(req,res)=>{
+    const {email , password} = req.body;
+    const client = await ClientModel.findOne({email});
+        if(client){
+            res.status(400).send('User is already exist , please login ');
+            return;
+        }
+    const encryptedPassword = await bcrypt.hash(password,10);
+    const newClient:Client = {
+        id:'',
+        email,
+        password:encryptedPassword,
+        isAdmin:false
+    }
+    const dbClinet = await ClientModel.create(newClient);
+    res.send(generateTokenResponse(dbClinet));
+    }
+))
+
+
+
 const port =5000;
 app.listen(port,()=>{
     console.log("Website served on http://localhost:" +port);
 })
+

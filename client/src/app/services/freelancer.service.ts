@@ -3,9 +3,12 @@ import{BehaviorSubject,Observable, tap} from 'rxjs'
 import { Freelancer } from '../shared/models/Freelencer';
 import { IuserLogin } from '../shared/models/interfaces/IuserLogin';
 import {HttpClient} from '@angular/common/http'
-import { FREELANCER_COMPLETE_URL, FREELANCER_LOGIN_URL, FREELANCER_PROJECT_URL, FREELANCER_URL, GET_FREELANCER_URL, RCIEVEMESSAGE_FREELANCER_URL, SENDMESSAGE_FREELANCER_URL } from '../shared/models/constantes/urs';
+import { FREELANCER_COMPLETE_URL, FREELANCER_LOGIN_URL,FREELANCER_REGISTER_URL, FREELANCER_PROJECT_URL, FREELANCER_URL, GET_FREELANCER_URL, RCIEVEMESSAGE_FREELANCER_URL, SENDMESSAGE_FREELANCER_URL } from '../shared/models/constantes/urs';
 import { ToastrService } from 'ngx-toastr';
 import { Ifreelancer } from '../shared/models/interfaces/Ifreelancer';
+
+
+import { IuserRegister } from '../shared/models/interfaces/IuserRegister';
 
 const FREELANCER_KEY='freelancer'
 @Injectable({
@@ -94,6 +97,21 @@ export class FreelancerService {
   getMessagesenders(idFreelancer:string){
     return this.http.get(RCIEVEMESSAGE_FREELANCER_URL+idFreelancer)
   }
+
+  register(freelancerRegister:IuserRegister){
+    console.log('hello free');
+    return this.http.post(FREELANCER_REGISTER_URL,freelancerRegister).pipe(
+      tap({
+        next:(User:any)=>{
+      this.setFreelancerTolocalStorage(User);
+        },
+        error:(errorResponce)=>{
+          this.toastrService.error(errorResponce.error,'Sign up echoiee')
+        }
+      })
+    )
+
 }
 
+}
 

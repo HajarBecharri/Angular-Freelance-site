@@ -1,7 +1,7 @@
 <app-not-found resetLinkText="Go To
 Homepage"  [visible]="!userc.token && !userf.token"></app-not-found>
 <div  class="container" *ngIf="userc.token || userf.token">
-  <img [src]="project.imageUrl" />
+  <img src="assets/{{project.imageUrl}}" />
   <div class="details">
     <div class="header">
       <span class="name">
@@ -23,8 +23,8 @@ Homepage"  [visible]="!userc.token && !userf.token"></app-not-found>
       </span>
     </div>
 
-    <button ><a  routerLink="/cathegorie/{{project.cathegorie}}">
-      {{project.cathegorie}}
+    <button ><a  routerLink="/cathegorie/{{project.cathegorie_id.id}}">
+      {{project.cathegorie_id.name}}
     </a></button>
 
   </div>

@@ -3,10 +3,13 @@ import{BehaviorSubject,Observable, tap} from 'rxjs'
 import { Client } from '../shared/models/Client';
 import { IuserLogin } from '../shared/models/interfaces/IuserLogin';
 import {HttpClient} from '@angular/common/http'
-import { CLIENT_COMPLETE_URL, CLIENT_LOGIN_URL, CLIENT_PROJECT_URL, RCIEVEMESSAGE_CLIENT_URL, SENDMESSAGE_CLIENT_URL } from '../shared/models/constantes/urs';
+import { CLIENT_COMPLETE_URL,CLIENT_REGISTER_URL , CLIENT_LOGIN_URL, CLIENT_PROJECT_URL, RCIEVEMESSAGE_CLIENT_URL, SENDMESSAGE_CLIENT_URL } from '../shared/models/constantes/urs';
 import { ToastrService } from 'ngx-toastr';
 import { Ifreelancer } from '../shared/models/interfaces/Ifreelancer';
 import { Iclient } from '../shared/models/interfaces/Iclient';
+
+
+import { IuserRegister } from '../shared/models/interfaces/IuserRegister';
 
 const CLIENT_KEY='client'
 @Injectable({
@@ -21,7 +24,7 @@ export class ClientService {
 
 
   Login(userLogin:IuserLogin):Observable<Client>{
-     
+
    return this.http.post<Client>(CLIENT_LOGIN_URL,userLogin).pipe(
     tap({
       next:(user)=>{
@@ -44,7 +47,7 @@ export class ClientService {
 
    private setclienttolocalstorage(freelancer:Client){
     localStorage.setItem(CLIENT_KEY,JSON.stringify(freelancer))
-           
+
    }
 
    private getclientFromLocalStorage():Client{
@@ -95,6 +98,20 @@ export class ClientService {
     return this.http.get(RCIEVEMESSAGE_CLIENT_URL+idClient)
   }
   
+  register(clientRegister:IuserRegister){
+    console.log('hello');
+    return this.http.post(CLIENT_REGISTER_URL,clientRegister).pipe(
+      tap({
+        next:(User:any)=>{
+      this.setclienttolocalstorage(User);
+        },
+        error:(errorResponce)=>{
+          this.toastrService.error(errorResponce.error,'Sign up echoiee')
+        }
+      })
+    )
+
+}
 }
 
 

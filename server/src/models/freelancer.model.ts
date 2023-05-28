@@ -3,16 +3,17 @@ import { Schema, model } from "mongoose";
 export interface Freelancer{
     id:string;
     email:string;
-    emailSecondaire:string;
-    firstName:string;
-    lastName:string;
-    age:Number;
-    motivations:string;
+    emailSecondaire?:string;
+    firstName?:string;
+    lastName?:string;
+    age?:Number;
+    motivations?:string;
+    name?:string;
     isAdmin:boolean;
-    address:string;
-    phone:string;
+    address?:string;
+    phone?:string;
     password:string;
-    token:string
+    token?:string
 }   
 
 export const FreelancerSchema =new Schema<Freelancer>(

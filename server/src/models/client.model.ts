@@ -3,19 +3,20 @@ import { Schema, model } from "mongoose";
 export interface Client{
     id:string;
     email:string;
-    emailSecondaire:string;
-    firstName:string;
-    lastName:string;
-    age:Number;
-    isAdmin:boolean;
-    address:string;
-    phone:string;
+    emailSecondaire?:string;
+    firstName?:string;
+    lastName?:string;
+    age ?:Number;
+    isAdmin :boolean;
+    name?:string;
+    address?:string;
+    phone?:string;
     password:string;
-    token:string
+    token?:string
 }   
 
 export const ClientSchema =new Schema<Client>(
-    {
+    {   name:{type:String,required:false},
         firstName:{type:String,required:false},
         lastName:{type:String,required:false},
         emailSecondaire:{type:String,required:false},
