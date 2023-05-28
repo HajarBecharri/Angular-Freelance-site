@@ -24,25 +24,29 @@ Homepage" [visible]="!userc.token && !userf.token"></app-not-found>
   <!-- Weight Column -->
   <ng-container matColumnDef="periode">
     <th mat-header-cell *matHeaderCellDef> Periode </th>
-    <td mat-cell *matCellDef="let element"> {{element.periode}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.period}} </td>
+  </ng-container>
+  <ng-container  matColumnDef="freelancer">
+    <th mat-header-cell *matHeaderCellDef > freelancer </th>
+    <td mat-cell *matCellDef="let element" >
+      <button (click)="messagerie(element.freelancer_id)" *ngIf="element.start"  mat-icon-button style="color: rgb(32, 127, 251);" aria-label="Example icon button with a home icon">
+        <mat-icon>mail_outline</mat-icon>
+      </button>
+      <button (click)="start(element.id)"  mat-flat-button  color="accent" *ngIf="!element.start" style="color: black;font-weight: bold;">Start</button>
+      
+    </td>
   </ng-container>
 
   <!-- Symbol Column -->
-  <ng-container matColumnDef="start">
-    <th mat-header-cell *matHeaderCellDef>  </th>
-    <td mat-cell *matCellDef="let element">
-     <button  (click)="start()" mat-button color="accent" *ngIf="!strt">Start</button>
-     <button *ngIf="strt && !done" mat-icon-button  aria-label="Example icon button with a home icon">
-     <mat-icon style="color: rgb(240, 14, 14);">timer</mat-icon>
-     </button> </td>
-  </ng-container>
-  <ng-container matColumnDef="done" >
+  
+  <ng-container matColumnDef="status" >
     <th mat-header-cell *matHeaderCellDef> </th>
     <td mat-cell *matCellDef="let element">
-        <button id={{element.id}} *ngIf="!done && strt" (click)="doneProject()" mat-flat-button color="primary">done</button>
-        <button id={{element.id}} *ngIf="done && strt" mat-icon-button  aria-label="Example icon button with a home icon">
-        <mat-icon  style="color: rgb(95, 218, 132)">done</mat-icon>
-     </button> </td>
+    <button mat-flat-button *ngIf="!element.done && element.start" (click)="doneProject(element.id)" color="primary" style="color: black;font-weight: bold;">done</button>
+  
+     <mat-icon *ngIf="element.done && element.start" aria-hidden="false" aria-label="Example home icon" fontIcon="done" style="color: green;"></mat-icon>
+     
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

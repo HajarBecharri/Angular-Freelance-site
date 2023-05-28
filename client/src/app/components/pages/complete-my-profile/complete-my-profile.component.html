@@ -7,11 +7,11 @@ Homepage"  [visible]="!userc.token && !userf.token"></app-not-found>
     <div class="row">
     <mat-form-field appearance="outline">
         <mat-label>first name</mat-label>
-        <input matInput type="text" formControlName="first name">
+        <input matInput type="text" formControlName="firstname">
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>last name</mat-label>
-        <input matInput type="text" formControlName="last name">
+        <input matInput type="text" formControlName="lastname">
     </mat-form-field>
    </div>
 
@@ -21,68 +21,25 @@ Homepage"  [visible]="!userc.token && !userf.token"></app-not-found>
         <input matInput type="text" formControlName="age">
     </mat-form-field>
     <mat-form-field appearance="outline">
-        <mat-label>status</mat-label>
-        <input matInput type="text" formControlName="status">
+        <mat-label>email secondaire</mat-label>
+        <input matInput type="text" formControlName="emailsecondaire">
     </mat-form-field>
    </div>
-   <div class="row">
-    <mat-form-field appearance="outline">
-        <mat-label>email</mat-label>
-        <input matInput type="text" formControlName="email">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>choose a special date</mat-label>
-        <input matInput [matDatepicker]="picker"formControlName="date">
-        <mat-hint>MM/DD/YYYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for] ="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-   </div>
-    <div class="row">
-        <mat-radio-group aria-label="select an option">
-          <mat-label> <b>Gender</b> </mat-label>
-          <mat-radio-button value="male" formControlName="gender">Male</mat-radio-button >
-          <mat-radio-button value="female" formControlName="gender">female</mat-radio-button>
-        </mat-radio-group>
-    </div>
-    <div class="row">
+   
+    <div class="row" *ngIf="userf.token">
+        
         <mat-form-field appearance="outline">
-            <mat-label>Favorite</mat-label>
-            <mat-select formControlName="favorite">
-                <mat-option>
-                    photography
-                </mat-option>
-                <mat-option>
-                    coding
-                </mat-option>
-                <mat-option>
-                    cooking
-                </mat-option>
-            </mat-select>
+            <mat-label>motivations</mat-label>
+            <input matInput type="text" formControlName="motivations">
         </mat-form-field>
-
-        <mat-form-field appearance="outline">
-            <mat-label>hobies</mat-label>
-            <mat-select formControlName="hobies">
-                <mat-option>
-                    photography
-                </mat-option>
-                <mat-option>
-                    swiming
-                </mat-option>
-                <mat-option> 
-                    reading            
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-
     </div>
+    
 </form>
 </div>
 
 <div mat-dialog-actions class="action">
     <button mat-raised-button [mat-dialog-close]="false">cancel</button>
-    <button mat-raised-button>save</button>
+    <button mat-raised-button (click)="submit()">save</button>
 
 </div>
 

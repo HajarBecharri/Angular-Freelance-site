@@ -3,7 +3,11 @@ import { Schema, model } from "mongoose";
 export interface Freelancer{
     id:string;
     email:string;
-    name:string;
+    emailSecondaire:string;
+    firstName:string;
+    lastName:string;
+    age:Number;
+    motivations:string;
     isAdmin:boolean;
     address:string;
     phone:string;
@@ -13,7 +17,11 @@ export interface Freelancer{
 
 export const FreelancerSchema =new Schema<Freelancer>(
     {
-        name:{type:String,required:false},
+        firstName:{type:String,required:false},
+        lastName:{type:String,required:false},
+        emailSecondaire:{type:String,required:false},
+        age:{type:Number,required:false},
+        motivations:{type:String,required:false},
         email:{type:String,required:true},
         isAdmin:{type:Boolean,required:true},
         address:{type:String,required:false},

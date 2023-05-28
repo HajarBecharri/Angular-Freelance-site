@@ -17,3 +17,22 @@ export const FREELANCER_URL = BASE_URL + '/freelancer/';
 
 
 export const PROJECT_URL = BASE_URL + '/project/' ;
+export const FREELANCER_COMPLETE_URL = BASE_URL + '/complete/freelancer' ;
+export const CLIENT_COMPLETE_URL = BASE_URL + '/complete/client' ;
+export const CLIENT_PROJECT_URL=BASE_URL+'/client/project/';
+export const FREELANCER_PROJECT_URL=BASE_URL+'/freelancer/project/';
+export const START_PROJECT_URL=BASE_URL+'/project/start';
+export const DONE_PROJECT_URL=BASE_URL+'/project/done/';
+export const GET_FREELANCER_URL=BASE_URL+'/freelancer/get/';
+export const SENDMESSAGE_CLIENT_URL=BASE_URL+'/client/addMessage';
+export const SENDMESSAGE_FREELANCER_URL=BASE_URL+'/freelancer/addMessage';
+export const RCIEVEMESSAGE_CLIENT_URL=BASE_URL+'/client/getMessagesSenders/';
+export const RCIEVEMESSAGE_FREELANCER_URL=BASE_URL+'/freelancer/getMessagesSenders/';
+
+
+
+
+
+
+
+

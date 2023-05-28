@@ -1,0 +1,27 @@
+
+<app-not-found resetLinkText="Go To
+Homepage"  [visible]="!userc.token && !userf.token"></app-not-found>
+<div *ngIf="userc.token || userf.token">
+<div mat-dialog-title><h1 style="color: rgb(68, 6, 185);">Messages</h1></div>
+<div mat-dialog-content class="container">
+   <div>
+    <mat-card *ngFor="let sender of senders" >
+        <mat-card-title style="color: blueviolet;font-weight: bold;">from:{{sender.sender_id.email}} at:{{sender.createdAt}} </mat-card-title>
+        <mat-card-content style="font-weight: bold;">{{sender.body}} </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary">
+             Repondre
+            </button>
+            
+          </mat-card-actions>
+      </mat-card>
+   </div>
+</div>
+
+<div mat-dialog-actions class="action">
+    <button mat-raised-button [mat-dialog-close]="false">cancel</button>
+    
+
+</div>
+
+</div>

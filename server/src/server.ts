@@ -10,6 +10,9 @@ import { ClientModel } from "./models/client.model";
 import { FreelancerModel } from "./models/freelancer.model";
 import { ProjectModel } from "./models/project.model";
 import { CathegorieModel } from "./models/cathegorie.model";
+import bcrypt from 'bcryptjs';
+import { MessagerieClientModel } from "./models/message.client.model";
+import { MessagerieFreelancerModel } from "./models/message.freelancer.model";
 dbconnect()
 
 const app=express();
@@ -20,42 +23,201 @@ app.use(cors({
     origin:["http://localhost:4200"]
 }));
 //to send body to the server we use post 
-app.get("/seed",asynceHandler(
+app.get("/seeds",asynceHandler(
     async(req,res)=>{
         const cath= await CathegorieModel.findById('646d16e7e47085fbfffa1246') 
-        const user= await ClientModel.findById('646d0065c660a4596ed1dbe8') 
+        const userc= await ClientModel.findById('64726759005aeb8c1250a58f') 
+        
+
+        
         const projectCount=await ProjectModel.countDocuments();
-        if(projectCount>0){
-            res.send(" already done")
-            return;
-        }
-        await ProjectModel.create({description:'bla bla', budjet:'1000$',period:'3j',client_id:user?._id,cathegorie_id:cath?._id})
+        
+        await ProjectModel.create({description:'Interface graphique python', budjet:'100$',period:'7j',client_id:userc?._id,cathegorie_id:cath?._id})
         res.send("done")
     }
 ))
+
+app.get("/seed",asynceHandler(async(req,res)=>{
+    const myproject=0
+    const project=await ProjectModel.findById("647269f7c5215bf13e195bc8").populate("client_id").then((e)=>{
+        const myproject=e
+        const client=myproject?.client_id
+        res.send(myproject)
+        
+    })
+    
+}))
+app.post("/create",asynceHandler(async(res,req)=>{
+    
+}))
+
+
 app.post("/freelancer/login",asynceHandler(async(req,res)=>{
     const {email,password}=req.body;
-    const freelancer=await FreelancerModel.findOne({email,password})
-    console.log(freelancer)
-
+    const freelancer=await FreelancerModel.findOne({email})
     if(freelancer){
+    const check =bcrypt.compareSync(password,freelancer!.password)
+
+    if(check){
         res.send(generateTokenResponse(freelancer));
-        console.log(freelancer)
+        
     }
     else{
+        res.status(400).send("Username or password is invalid")
+    }}
+    else {
         res.status(400).send("Username or password is invalid")
     }
 
 }
 ))
+///complete/freelancer/
+app.post("/complete/freelancer",asynceHandler(
+    async(req,res)=>{
+        const {id,emailsecondaire,firstname,lastname,age,motivations}=req.body;
+        const freelancer=await FreelancerModel.updateMany(
+            { _id: id },
+            { $set: {firstname:firstname,lastName:lastname,emailSecondaire:emailsecondaire,motivations:motivations,age:age }},
+        );
+        if(freelancer)
+        res.send(freelancer)
+        else
+        res.send("not found") 
+    }
+))
+app.post("/complete/client",asynceHandler(
+    async(req,res)=>{
+        const {id,emailsecondaire,firstname,lastname,age}=req.body;
+        const client=await ClientModel.updateMany(
+            { _id: id },
+            { $set: {firstname:firstname,lastName:lastname,emailSecondaire:emailsecondaire,age:age }},
+        );
+        if(client)
+        res.send(client)
+        else
+        res.send("not found") 
+    }
+))
+app.post("/project/start",asynceHandler(
+    async(req,res)=>{
+        const {id_project,email_freelancer}=req.body
+        const freelancer=await FreelancerModel.findOne({email:email_freelancer})
+        if(freelancer){
+            const project=await ProjectModel.updateOne(
+                {_id:id_project},
+                {
+                  $set:{start:true,freelancer_id:freelancer?._id}  
+                }
+            );
+           
+            if(project)
+            res.send(freelancer)
+            else
+            res.status(400).send("error") 
+        }
+        res.status(400).send("email invalid")
+        
+    }
+))
+app.get("/freelancer/get/:id",asynceHandler(
+    async(req,res)=>{
+        const id_freelancer=req.params.id
+        const freelancer=await FreelancerModel.findById(id_freelancer)
+        res.send(freelancer)
+    }
+
+))
+app.get("/project/done/:idProject",asynceHandler(
+    async(req,res)=>{
+        const id_project=req.params.idProject
+        console.log(id_project)
+        const project=await ProjectModel.updateOne(
+            {_id:id_project},
+            {
+              $set:{done:true}  
+            }
+        );
+        if(project){
+            res.send(project)
+        }
+        else res.send("")
+    }
+))
+
+app.get("/freelancer/project/:idfreelancer",asynceHandler(
+    async(req,res)=>{
+        const id_freelancer=req.params.idfreelancer;
+        const projects=await ProjectModel.find({freelancer_id:id_freelancer})
+        res.send(projects)
+    }
+))
+
+app.get("/client/project/:idclient",asynceHandler(
+    async(req,res)=>{
+        const id_client=req.params.idclient
+        console.log(id_client)
+        const projects=await ProjectModel.find({client_id:id_client})
+        console.log(projects)
+        res.send(projects)
+    }
+))
+
+app.post("/client/addMessage",asynceHandler(async(req,res)=>{
+    const{body,id_client,id_freelancer}=req.body;
+    
+    const message=await MessagerieClientModel.create({body:body,sender_id:id_client,recipient_id:id_freelancer})
+    if(message){
+        res.send(message)
+    }
+    else {
+        res.status(400).send("send failed")
+    }
+    
+
+}))
+
+app.post("/freelancer/addMessage",asynceHandler(async(req,res)=>{
+    const{body,id_client,id_freelancer}=req.body;
+    
+    const message=await MessagerieFreelancerModel.create({body:body,sender_id:id_freelancer,recipient_id:id_client})
+    if(message){
+        res.send(message)
+    }
+    else {
+        res.status(400).send("send failed")
+    }
+    
+
+}))
+
+app.get("/client/getMessagesSenders/:idClient",asynceHandler(async(req,res)=>{
+    const idClient= req.params.idClient;
+    const messages=await MessagerieFreelancerModel.find({recipient_id:idClient}).populate("sender_id").then((e)=>
+     res.send(e)
+    )
+}))
+
+app.get("/freelancer/getMessagesSenders/:idFreelancer",asynceHandler(async(req,res)=>{
+    const idFreelancer= req.params.idFreelancer;
+    const messages=await MessagerieClientModel.find({recipient_id:idFreelancer}).populate("sender_id").then((e)=>
+     res.send(e)
+    )
+}))
+
 app.post("/client/login",asynceHandler(async(req,res)=>{
     const {email,password}=req.body;
-    const client=await ClientModel.findOne({email,password})
-
+    
+    const client=await ClientModel.findOne({email})
     if(client){
+    const check =bcrypt.compareSync(password,client!.password)
+
+    if(check){
         res.send(generateTokenResponse(client));
     }
     else{
+        res.status(400).send("Username or password is invalid")
+    }}
+    else {
         res.status(400).send("Username or password is invalid")
     }
 

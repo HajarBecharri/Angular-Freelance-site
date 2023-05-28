@@ -3,6 +3,11 @@ export class Client {
     email!:string;
     name!:string;
     token!:string;
+    emailsecondaire!:string;
+    gender!:string;
+    age!:number;
+    firstname!:string;
+    lastname!:string;
     isAdmin!:boolean;
     address!:string;
 

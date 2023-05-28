@@ -1,0 +1,22 @@
+
+<app-not-found resetLinkText="Go To
+Homepage"  [visible]="!userc.token && !userf.token"></app-not-found>
+<div *ngIf="userc.token || userf.token">
+<div mat-dialog-title><h1 style="color: rgb(68, 6, 185);">Choisir freelancer</h1></div>
+<div mat-dialog-content class="container">
+    <mat-form-field class="example-form-field">
+        <mat-label>Freelancer Email</mat-label>
+        <input matInput type="text" [(ngModel)]="email">
+        <button *ngIf="email" matSuffix mat-icon-button aria-label="Clear" (click)="email=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+</div>
+
+<div mat-dialog-actions class="action">
+    <button mat-raised-button [mat-dialog-close]="false">cancel</button>
+    <button mat-raised-button (click)="submit()">save</button>
+
+</div>
+
+</div>

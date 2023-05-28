@@ -1,0 +1,25 @@
+<app-not-found resetLinkText="Go To
+Homepage"  [visible]="!userc.token && !userf.token"></app-not-found>
+<div *ngIf="userc.token || userf.token">
+<div mat-dialog-title><button mat-fab extended color="primary">
+    <mat-icon>mail</mat-icon>
+    Messagerie
+  </button></div>
+<div mat-dialog-content class="container">
+    <mat-form-field class="example-form-field">
+        <mat-label>send Message</mat-label>
+        <input matInput type="text" [(ngModel)]="message">
+        <button *ngIf="message" matSuffix mat-icon-button aria-label="Clear" (click)="message=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+</div>
+
+<div mat-dialog-actions class="action">
+    <button mat-raised-button [mat-dialog-close]="false">cancel</button>
+    <button mat-raised-button (click)="submit()">save</button>
+
+</div>
+
+</div>
+

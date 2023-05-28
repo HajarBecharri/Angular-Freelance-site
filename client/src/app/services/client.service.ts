@@ -3,8 +3,10 @@ import{BehaviorSubject,Observable, tap} from 'rxjs'
 import { Client } from '../shared/models/Client';
 import { IuserLogin } from '../shared/models/interfaces/IuserLogin';
 import {HttpClient} from '@angular/common/http'
-import { CLIENT_LOGIN_URL } from '../shared/models/constantes/urs';
+import { CLIENT_COMPLETE_URL, CLIENT_LOGIN_URL, CLIENT_PROJECT_URL, RCIEVEMESSAGE_CLIENT_URL, SENDMESSAGE_CLIENT_URL } from '../shared/models/constantes/urs';
 import { ToastrService } from 'ngx-toastr';
+import { Ifreelancer } from '../shared/models/interfaces/Ifreelancer';
+import { Iclient } from '../shared/models/interfaces/Iclient';
 
 const CLIENT_KEY='client'
 @Injectable({
@@ -26,7 +28,7 @@ export class ClientService {
         this.setclienttolocalstorage(user)
            this.clientSubject.next(user);
            this.toastrService.success(
-            `Welcome to near ${user.name}`,
+            `Welcome to near | ${user.email}`,
             'Login Successful'
            )
       },
@@ -58,6 +60,41 @@ export class ClientService {
     //to refresh the page
     window.location.reload();
   }
+  completeProfile(client:Iclient){
+    console.log(client)
+   return this.http.post(CLIENT_COMPLETE_URL,client)}
+
+   ClientProject(idClient:string):Observable<Client[]>{
+    console.log(idClient)
+    return this.http.get<Client[]>(CLIENT_PROJECT_URL + idClient)
+  }
+
+  sendMessage(body:string,id_client:string,id_freelancer:string){
+    return this.http.post(SENDMESSAGE_CLIENT_URL,{
+      body:body,
+      id_client:id_client,
+      id_freelancer:id_freelancer
+    }).pipe(
+      tap({
+        next:(user)=>{
+        
+             this.toastrService.success(
+              `done`,
+              'send Successfully'
+             )
+        },
+        error:(errorResponse)=>{
+          this.toastrService.error(
+            errorResponse.error,'try again'
+           )
+        }
+      }))
+  }
+
+  getMessagesenders(idClient:string){
+    return this.http.get(RCIEVEMESSAGE_CLIENT_URL+idClient)
+  }
+  
 }
 
 

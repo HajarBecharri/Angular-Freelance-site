@@ -14,8 +14,7 @@ import { ProjectComponent } from './components/pages/project/project.component';
 import { CompleteMyProfileComponent } from './components/pages/complete-my-profile/complete-my-profile.component';
 import { ImboxFreelancerComponent } from './components/pages/imbox-freelancer/imbox-freelancer.component';
 import { ImboxClientComponent } from './components/pages/imbox-client/imbox-client.component';
-
-
+import { FreelancerGmailComponent } from './components/pages/freelancer-gmail/freelancer-gmail.component';
 const routes: Routes = [
   {path:'login/:user',component:LoginPageComponent},
   {path:'about',component:AboutComponent},
@@ -32,6 +31,7 @@ const routes: Routes = [
   {path:'complete',component:CompleteMyProfileComponent},
   {path:'project/imbox/freelancer' , component:ImboxFreelancerComponent},
   {path:'project/imbox/client' , component:ImboxClientComponent},
+  {path:'freelancerGmail/:id_project' , component:FreelancerGmailComponent},
 ];
 
 @NgModule({

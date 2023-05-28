@@ -3,8 +3,9 @@ import{BehaviorSubject,Observable, tap} from 'rxjs'
 import { Freelancer } from '../shared/models/Freelencer';
 import { IuserLogin } from '../shared/models/interfaces/IuserLogin';
 import {HttpClient} from '@angular/common/http'
-import { FREELANCER_LOGIN_URL, FREELANCER_URL } from '../shared/models/constantes/urs';
+import { FREELANCER_COMPLETE_URL, FREELANCER_LOGIN_URL, FREELANCER_PROJECT_URL, FREELANCER_URL, GET_FREELANCER_URL, RCIEVEMESSAGE_FREELANCER_URL, SENDMESSAGE_FREELANCER_URL } from '../shared/models/constantes/urs';
 import { ToastrService } from 'ngx-toastr';
+import { Ifreelancer } from '../shared/models/interfaces/Ifreelancer';
 
 const FREELANCER_KEY='freelancer'
 @Injectable({
@@ -28,7 +29,7 @@ export class FreelancerService {
       //we need to import Module (install ngx-toastr) , BrowserAnimationModule, and Adding style in angular.json
       this.freelancerSubject.next(User);
       this.toastrService.success(
-        `Welcome to food ${User.name}`,
+        `Welcome to near | ${User.email}`,
         'Login Successful'
       )
         },
@@ -39,6 +40,9 @@ export class FreelancerService {
     );
 
    }
+   completeProfile(freelancer:Ifreelancer){
+     console.log(freelancer)
+    return this.http.post(FREELANCER_COMPLETE_URL,freelancer)}
 
    private setFreelancerTolocalStorage(freelancer:Freelancer){
     localStorage.setItem(FREELANCER_KEY,JSON.stringify(freelancer));
@@ -57,8 +61,38 @@ export class FreelancerService {
     //to refresh the page
     window.location.reload();
   }
-  getFreelancer(freelacer:string){
-    return this.http.get(FREELANCER_URL+ freelacer);
+  getFreelancer(freelancer_id:string):Observable<Freelancer>{
+    return this.http.get<Freelancer>(GET_FREELANCER_URL+ freelancer_id);
+  }
+
+  FreelancerProject(idFreelancer:string):Observable<Freelancer[]>{
+    return this.http.get<Freelancer[]>(FREELANCER_PROJECT_URL + idFreelancer)
+  }
+
+  sendMessage(body:string,id_freelancer:string,id_client:string){
+    return this.http.post(SENDMESSAGE_FREELANCER_URL,{
+      body:body,
+      id_client:id_client,
+      id_freelancer:id_freelancer
+    }).pipe(
+      tap({
+        next:(user)=>{
+        
+             this.toastrService.success(
+              `done`,
+              'send Successfully'
+             )
+        },
+        error:(errorResponse)=>{
+          this.toastrService.error(
+            errorResponse.error,'try again'
+           )
+        }
+      }))
+  }
+  
+  getMessagesenders(idFreelancer:string){
+    return this.http.get(RCIEVEMESSAGE_FREELANCER_URL+idFreelancer)
   }
 }
 

@@ -21,10 +21,7 @@
                     <a routerLink="/Register" class="logo">Sign UP</a>
                 </li>
 
-                <li  *ngIf="userf.token || userc.token" >
-                    <a *ngIf="userf.token" routerLink="profil" class="logo">Welcome Freelancer:{{userf.email}}</a>
-                    <a *ngIf="userc.token" routerLink="profil" class="logo">Welcome Client:{{userc.email}}</a>
-                </li>
+                
                 <li class="menu-container">
                     <a routerLink="/dashboard">Guid</a>
                     <div class="menu">
@@ -40,6 +37,10 @@
                 <div class="box">
                   <a routerLink="/get_idea">Get idea</a>
               </div>
+              <li  *ngIf="userf.token || userc.token" >
+                <a style="color: white;font-family:I" *ngIf="userf.token" routerLink="profil" class="logo">{{userf.email}}</a>
+                <a style="color: white;font-family:I" *ngIf="userc.token" routerLink="profil" class="logo">{{userc.email}}</a>
+            </li>
               
             </ul>
         </nav>

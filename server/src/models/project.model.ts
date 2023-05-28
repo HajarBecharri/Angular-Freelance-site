@@ -1,4 +1,7 @@
 import mongoose, { Schema, model } from "mongoose";
+import { FreelancerModel, FreelancerSchema } from "./freelancer.model";
+import { ClientModel } from "./client.model";
+import { CathegorieModel } from "./cathegorie.model";
 
 export interface Project{
     id:string;
@@ -18,12 +21,12 @@ export const ProjectSchema =new Schema<Project>(
         description:{type:String,required:false},
         budjet:{type:String,required:true},
         period:{type:String,required:true},
-        cathegorie_id:{type:mongoose.Schema.Types.ObjectId,required:true},
+        cathegorie_id:{type:mongoose.Schema.Types.ObjectId,required:true,ref:CathegorieModel},
         imageUrl:{type:String,required:false},
-        start:{type:Boolean,required:false},
-        done:{type:Boolean,required:false},
-        client_id:{type:mongoose.Schema.Types.ObjectId,required:true},
-        freelancer_id:{type:mongoose.Schema.Types.ObjectId,required:false}
+        start:{type:Boolean,required:true,default:false},
+        done:{type:Boolean,required:true,default:false},
+        client_id:{type:mongoose.Schema.Types.ObjectId,required:true,ref:ClientModel},
+        freelancer_id:{type:mongoose.Schema.Types.ObjectId,required:false,ref:FreelancerModel}
         
         
 

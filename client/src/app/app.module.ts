@@ -37,7 +37,12 @@ import { SusheaderComponent } from './components/partials/susheader/susheader.co
 import { ImboxFreelancerComponent } from './components/pages/imbox-freelancer/imbox-freelancer.component';
 import { ImboxClientComponent } from './components/pages/imbox-client/imbox-client.component';
 import { MatTableModule } from '@angular/material/table';
-import { NotFoundComponent } from './components/partials/not-found/not-found.component' ;
+import { NotFoundComponent } from './components/partials/not-found/not-found.component';
+import { FreelancerGmailComponent } from './components/pages/freelancer-gmail/freelancer-gmail.component';
+import { SendMessageComponent } from './components/pages/send-message/send-message.component' ;
+import {MatBadgeModule} from '@angular/material/badge';
+import { MessageSendersComponent } from './components/pages/message-senders/message-senders.component';
+import { MessagesComponent } from './components/pages/messages/messages.component';
 
 
 
@@ -62,6 +67,10 @@ import { NotFoundComponent } from './components/partials/not-found/not-found.com
     ImboxFreelancerComponent,
     ImboxClientComponent,
     NotFoundComponent,
+    FreelancerGmailComponent,
+    SendMessageComponent,
+    MessageSendersComponent,
+    MessagesComponent,
     
     
     
@@ -92,7 +101,8 @@ import { NotFoundComponent } from './components/partials/not-found/not-found.com
     MatSlideToggleModule,
     MatDialogModule,
     MatNativeDateModule,
-    MatTableModule
+    MatTableModule,
+    MatBadgeModule
 
 
     

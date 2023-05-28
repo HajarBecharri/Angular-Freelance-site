@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CompleteMyProfileComponent } from '../../pages/complete-my-profile/complete-my-profile.component';
 import { ImboxClientComponent } from '../../pages/imbox-client/imbox-client.component';
 import { ImboxFreelancerComponent } from '../../pages/imbox-freelancer/imbox-freelancer.component';
 import { FreelancerService } from 'src/app/services/freelancer.service';
 import { ClientService } from 'src/app/services/client.service';
 import { Router } from '@angular/router';
+import { MessageSendersComponent } from '../../pages/message-senders/message-senders.component';
 @Component({
   selector: 'app-susheader',
   templateUrl: './susheader.component.html',
@@ -43,5 +44,19 @@ about(){
 }
 getStarted(){
   this.router.navigateByUrl('how-work')
+}
+openchat(){
+  if(this.userc.token){
+    this._dialog.open(MessageSendersComponent,{
+      data:this.userc.id
+    })
+  
+    
+  }
+  else if(this.userf.token){
+    this._dialog.open(MessageSendersComponent,{
+      data:this.userf.id
+    })
+  }
 }
 }
