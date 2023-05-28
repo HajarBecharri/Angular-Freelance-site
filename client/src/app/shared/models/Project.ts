@@ -11,6 +11,6 @@ export class Project{
   imageUrl!:string;
   done!:boolean;
   start!:boolean;
-  client_id!:Client;
-  freelancer!:Freelancer;
+  client_id!:string;
+  freelancer!:string;
 }
