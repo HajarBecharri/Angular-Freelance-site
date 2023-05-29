@@ -65,7 +65,21 @@ export class ClientService {
   }
   completeProfile(client:Iclient){
     console.log(client)
-   return this.http.post(CLIENT_COMPLETE_URL,client)}
+   return this.http.post(CLIENT_COMPLETE_URL,client).pipe(
+    tap({
+      next:(user)=>{
+      
+           this.toastrService.success(
+            `done`,
+            'send Successfully'
+           )
+      },
+      error:(errorResponse)=>{
+        this.toastrService.error(
+          errorResponse.error,'try again'
+         )
+      }
+    }))}
 
    ClientProject(idClient:string):Observable<Client[]>{
     console.log(idClient)

@@ -47,6 +47,7 @@ import { PaimentComponent } from './components/pages/paiment/paiment.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

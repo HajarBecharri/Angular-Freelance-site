@@ -17,11 +17,15 @@ Homepage"  [visible]="!userc.token && !userf.token"></app-not-found>
 
    <div class="row">
     <mat-form-field appearance="outline">
-        <mat-label>age</mat-label>
+        <mat-label>age:</mat-label>
         <input matInput type="text" formControlName="age">
     </mat-form-field>
     <mat-form-field appearance="outline">
-        <mat-label>email secondaire</mat-label>
+        <mat-label>name:</mat-label>
+        <input matInput type="text" formControlName="name">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>email secondaire:</mat-label>
         <input matInput type="text" formControlName="emailsecondaire">
     </mat-form-field>
    </div>
@@ -29,11 +33,26 @@ Homepage"  [visible]="!userc.token && !userf.token"></app-not-found>
     <div class="row" *ngIf="userf.token">
         
         <mat-form-field appearance="outline">
-            <mat-label>motivations</mat-label>
-            <input matInput type="text" formControlName="motivations">
+            <mat-label>motivations:</mat-label>
+            <textarea formControlName="motivations" matInput
+                      cdkTextareaAutosize
+                      #autosize="cdkTextareaAutosize"
+                      cdkAutosizeMinRows="1"
+                      cdkAutosizeMaxRows="5"></textarea>
+        </mat-form-field>
+       
+       
+    </div>
+
+    <div class="row" *ngIf="userf.token">
+        <mat-form-field appearance="outline">
+
+            <input (change)="onFileSelected($event)" matInput type="File">
+            <img [src]="imageData" [alt]="loginForm.value.name">
         </mat-form-field>
     </div>
-    
+
+   
 </form>
 </div>
 

@@ -91,28 +91,30 @@ app.post("/freelancer/login",asynceHandler(async(req,res)=>{
 ///complete/freelancer/
 app.post("/complete/freelancer",asynceHandler(
     async(req,res)=>{
-        const {id,emailsecondaire,firstname,lastname,age,motivations}=req.body;
+        const {id,emailsecondaire,firstname,lastname,age,motivations,name}=req.body;
+        
         const freelancer=await FreelancerModel.updateMany(
             { _id: id },
-            { $set: {firstname:firstname,lastName:lastname,emailSecondaire:emailsecondaire,motivations:motivations,age:age }},
+            { $set: {firstName:firstname,lastName:lastname,emailSecondaire:emailsecondaire,motivations:motivations,age:age ,name:name}},
         );
         if(freelancer)
         res.send(freelancer)
         else
-        res.send("not found") 
+        res.status(400).send("Modification failed") 
     }
 ))
 app.post("/complete/client",asynceHandler(
     async(req,res)=>{
-        const {id,emailsecondaire,firstname,lastname,age}=req.body;
+        const {id,emailsecondaire,firstname,lastname,age,name}=req.body;
+        console.log(lastname)
         const client=await ClientModel.updateMany(
             { _id: id },
-            { $set: {firstname:firstname,lastName:lastname,emailSecondaire:emailsecondaire,age:age }},
+            { $set: {firstName:firstname,lastName:lastname,emailSecondaire:emailsecondaire,age:age ,name:name}},
         );
         if(client)
         res.send(client)
         else
-        res.send("not found") 
+        res.status(400).send("Modification failed") 
     }
 ))
 app.post("/project/start",asynceHandler(
