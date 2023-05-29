@@ -45,7 +45,21 @@ export class FreelancerService {
    }
    completeProfile(freelancer:Ifreelancer){
      console.log(freelancer)
-    return this.http.post(FREELANCER_COMPLETE_URL,freelancer)}
+    return this.http.post(FREELANCER_COMPLETE_URL,freelancer).pipe(
+      tap({
+        next:(user)=>{
+        
+             this.toastrService.success(
+              `done`,
+              'send Successfully'
+             )
+        },
+        error:(errorResponse)=>{
+          this.toastrService.error(
+            errorResponse.error,'try again'
+           )
+        }
+      }))}
 
    private setFreelancerTolocalStorage(freelancer:Freelancer){
     localStorage.setItem(FREELANCER_KEY,JSON.stringify(freelancer));

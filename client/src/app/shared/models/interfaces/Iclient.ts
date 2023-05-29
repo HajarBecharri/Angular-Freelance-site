@@ -4,6 +4,7 @@ export interface Iclient{
     firstname:string;
     lastname:string;
     age:number;
+    name:string;
     
     
 }

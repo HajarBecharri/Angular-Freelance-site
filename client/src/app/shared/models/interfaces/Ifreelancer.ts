@@ -5,5 +5,6 @@ export interface Ifreelancer{
     lastname:string;
     age:number;
     motivations:string;
+    name:string;
     
 }

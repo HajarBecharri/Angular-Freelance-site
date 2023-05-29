@@ -14,12 +14,15 @@ export interface Freelancer{
     phone?:string;
     password:string;
     token?:string
+    imageUrl?:string
 }   
 
 export const FreelancerSchema =new Schema<Freelancer>(
     {
         firstName:{type:String,required:false},
         lastName:{type:String,required:false},
+        name:{type:String,required:false},
+        imageUrl:{type:String,required:false},
         emailSecondaire:{type:String,required:false},
         age:{type:Number,required:false},
         motivations:{type:String,required:false},
