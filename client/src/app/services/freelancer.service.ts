@@ -80,7 +80,7 @@ export class FreelancerService {
     }).pipe(
       tap({
         next:(user)=>{
-        
+
              this.toastrService.success(
               `done`,
               'send Successfully'
@@ -93,7 +93,7 @@ export class FreelancerService {
         }
       }))
   }
-  
+
   getMessagesenders(idFreelancer:string){
     return this.http.get(RCIEVEMESSAGE_FREELANCER_URL+idFreelancer)
   }
@@ -110,7 +110,6 @@ export class FreelancerService {
         }
       })
     )
-
 }
 
 }

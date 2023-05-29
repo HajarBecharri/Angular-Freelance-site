@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Project } from '../shared/models/Project';
 import { Observable, tap } from 'rxjs';
-import { ADD_PROJECT,ADD_PROJECT_URL, CATHEGORIES_URL, CATHEGORIE_URL, DONE_PROJECT_URL, GET_IDEA_URL, PROJECTS_URL, PROJECT_URL, START_PROJECT_URL } from '../shared/models/constantes/urs';
+import { ADD_PROJECT,ADD_PROJECT_URL, CATHEGORIES_URL, CATHEGORIE_URL, DONE_PROJECT_URL, GET_IDEA_URL, PAY_URL, PROJECTS_URL, PROJECT_TO_PAY, PROJECT_URL, START_PROJECT_URL } from '../shared/models/constantes/urs';
 import { HttpClient } from '@angular/common/http';
 import { Freelancer } from '../shared/models/Freelencer';
 import { ToastrService } from 'ngx-toastr';
@@ -43,7 +43,7 @@ export class ProjectService {
     }).pipe(
       tap({
         next:(user)=>{
-        
+
              this.toastrService.success(
               `good job`,
               'start Successfully'
@@ -63,5 +63,13 @@ export class ProjectService {
   }
    AddProjct(project:FormData){
     return this.http.post(ADD_PROJECT_URL,project);
+   }
+   getProject(id:string):Observable<Project>{
+    return this.http.get<Project>(PROJECT_TO_PAY+id)
+    
+        }
+
+   pay(project:Project){
+   return this.http.post(PAY_URL,project);
    }
 }

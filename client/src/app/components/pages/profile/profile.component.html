@@ -2,10 +2,9 @@
 Homepage"  [visible]="!userc.token && !userf.token"></app-not-found>
 <div class="wrapper" *ngIf="userf.token || userc.token">
   <div class="left">
-      <img [src]="freelancer.ImageUrl"
+      <img src="assets/{{freelancer.ImageUrl}}"
       alt="user" width="100">
       <h4>{{freelancer.name}}</h4>
-       <p>UI Developer</p>
   </div>
   <div class="right">
       <div class="info">
@@ -24,9 +23,9 @@ Homepage"  [visible]="!userc.token && !userf.token"></app-not-found>
 
     <div class="projects">
           <h3>Projects</h3>
-          <div class="projects_data" >
+          <div class="projects_data" *ngFor="let project of projects">
                <div class="data">
-                  <h4>{{freelancer.project.description}}</h4>
+                  <h4>{{project.description}}</h4>
                </div>
           </div>
       </div>

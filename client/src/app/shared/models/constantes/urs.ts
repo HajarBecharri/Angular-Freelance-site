@@ -29,14 +29,9 @@ export const SENDMESSAGE_FREELANCER_URL=BASE_URL+'/freelancer/addMessage';
 export const RCIEVEMESSAGE_CLIENT_URL=BASE_URL+'/client/getMessagesSenders/';
 export const RCIEVEMESSAGE_FREELANCER_URL=BASE_URL+'/freelancer/getMessagesSenders/';
 
+export const PROJECT_TO_PAY = BASE_URL +'/getproject/' ;
 
-
-
-
-
-
-
-
+export const PAY_URL = BASE_URL + '/pay' ;
 
 export const FREELANCER_REGISTER_URL = BASE_URL + '/register/Freelancer';
 

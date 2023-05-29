@@ -43,6 +43,7 @@ import { SendMessageComponent } from './components/pages/send-message/send-messa
 import {MatBadgeModule} from '@angular/material/badge';
 import { MessageSendersComponent } from './components/pages/message-senders/message-senders.component';
 import { MessagesComponent } from './components/pages/messages/messages.component';
+import { PaimentComponent } from './components/pages/paiment/paiment.component';
 
 
 
@@ -71,6 +72,7 @@ import { MessagesComponent } from './components/pages/messages/messages.componen
     SendMessageComponent,
     MessageSendersComponent,
     MessagesComponent,
+    PaimentComponent,
     
     
     

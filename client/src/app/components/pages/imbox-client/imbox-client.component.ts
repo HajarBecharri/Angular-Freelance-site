@@ -8,6 +8,7 @@ import { Client } from 'src/app/shared/models/Client';
 import { FreelancerGmailComponent } from '../freelancer-gmail/freelancer-gmail.component';
 import { Freelancer } from 'src/app/shared/models/Freelencer';
 import { SendMessageComponent } from '../send-message/send-message.component';
+import { PaimentComponent } from '../paiment/paiment.component';
 
 
 
@@ -36,7 +37,7 @@ export class ImboxClientComponent implements OnInit {
   userc!:any;
   email!:string;
   freelancer!:Freelancer
-constructor(private _dialog:MatDialog,private router:Router,private Projectservice:ProjectService,private clientservice:ClientService,private freelancerservice:FreelancerService ,private dialogRef: MatDialogRef<ImboxClientComponent> ){
+constructor(private _dialog:MatDialog,private Mydialog:MatDialog,private router:Router,private Projectservice:ProjectService,private clientservice:ClientService,private freelancerservice:FreelancerService ,private dialogRef: MatDialogRef<ImboxClientComponent> ){
 
   freelancerservice.freelancerObservable.subscribe((newFreelancer)=>
   this.userf=newFreelancer)
@@ -44,16 +45,16 @@ constructor(private _dialog:MatDialog,private router:Router,private Projectservi
   this.userc=newClient)
   if(this.userc){
   this.clientservice.ClientProject(this.userc._id).subscribe((data)=>{
-    
+
     this.dataSource=data
-    
-    
+
+
   })
 
   }
 }
   ngOnInit(): void {
-   
+
   }
 
 
@@ -61,7 +62,6 @@ start(id:string){
   this._dialog.open(FreelancerGmailComponent,{
     data:id
   })
-
   this.dialogRef.close()
 
 }
@@ -83,5 +83,10 @@ messagerie(id_freelancer:string){
 
   this.dialogRef.close()
 }
-  
+paier(id:string){
+  this.Mydialog.open(PaimentComponent,{
+    data:id
+  });
+}
+
 }

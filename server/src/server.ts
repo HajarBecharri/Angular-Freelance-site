@@ -14,6 +14,21 @@ import { MessagerieClientModel } from "./models/message.client.model";
 import { MessagerieFreelancerModel } from "./models/message.freelancer.model";
 import bcrypt from 'bcryptjs'
 const path = require('path');
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+    destination: (req: any, file: any, cb:any ) => {
+      cb(null, 'C:/project_web2/freelance/client/src/assets'); 
+    },
+    filename: (req: any, file:any, cb:any )=> {
+      console.log(file);
+      const filename = file.originalname;
+      cb(null,filename);
+    }
+  });
+
+  const upload = multer({ storage });
+
 
 
 
@@ -31,8 +46,6 @@ app.get("/seeds",asynceHandler(
     async(req,res)=>{
         const cath= await CathegorieModel.findById('646d16e7e47085fbfffa1246') 
         const userc= await ClientModel.findById('64726759005aeb8c1250a58f') 
-        
-
         
         const projectCount=await ProjectModel.countDocuments();
         
@@ -159,9 +172,7 @@ app.get("/freelancer/project/:idfreelancer",asynceHandler(
 app.get("/client/project/:idclient",asynceHandler(
     async(req,res)=>{
         const id_client=req.params.idclient
-        console.log(id_client)
         const projects=await ProjectModel.find({client_id:id_client})
-        console.log(projects)
         res.send(projects)
     }
 ))
@@ -226,6 +237,24 @@ app.post("/client/login",asynceHandler(async(req,res)=>{
     }
 
 }))
+app.post('/addProject',upload.single('imageFile') ,async(req ,res)=>{
+    const newProject:Project = {
+     id : '',
+     description: req.body.description,
+     budjet: req.body.budjet,
+     period: req.body.period,
+     cathegorie_id: req.body.cathegorieId,
+     client_id: req.body.clientId,
+     imageUrl: req.body.imageUrl 
+    }
+    const dbProject = await ProjectModel.create(newProject);
+    const cthegorie = await CathegorieModel.findByIdAndUpdate(dbProject.cathegorie_id,{
+        $push:{projects:dbProject.id}
+    })
+
+    res.send("Project saved");
+}
+)
 
 //to generate the token
 const generateTokenResponse= (user:any)=>{
@@ -263,15 +292,13 @@ app.get('/cathegorie/:id',asynceHandler(
 ));
 app.get('/get_idea' ,asynceHandler(
     async(req , res)=>{
-    const projects = await ProjectModel.find({done:true}).populate('cathegorie_id');
+    const projects = await ProjectModel.find({done:true}).populate('cathegorie_id').populate('freelancer_id');
     res.send(projects)
     }
 ));
 app.get('/freelancer/:id',asynceHandler(async(req ,res)=>{
     const id = req.params.id ;
     const freelancer = await FreelancerModel.findOne({_id:id})
-    // const freelancer = sample_freelacer.find(item => item.name === name);
-    console.log(freelancer);
     res.send(freelancer);
 }));
 app.get('/project/:id',asynceHandler(
@@ -320,7 +347,41 @@ app.post('/register/Client',asynceHandler(
     const dbClinet = await ClientModel.create(newClient);
     res.send(generateTokenResponse(dbClinet));
     }
+));
+
+app.get('/getproject/:id',asynceHandler(
+    async(req ,res)=>{
+    const id = req.params.id
+    console.log(id);
+    const project = await ProjectModel.findOne({_id:id});
+    if(!project){
+    res.status(404).send("Project Not found");
+    }
+    else{
+    console.log(project);
+    res.send(project);
+    }
+    }
 ))
+
+app.post('/pay' , asynceHandler(
+    async(req,res)=>{
+       const id = req.body.id ; 
+       const project = await ProjectModel.updateOne({_id:id},{
+        $set:{
+            paied : true ,
+            paimentId : req.body.paimentId 
+        }
+       });
+  if(!project){
+    res.status(400).send("Project Not Found");
+  }
+  else{
+     res.send(project);
+  }
+
+    })
+)
 
 
 
