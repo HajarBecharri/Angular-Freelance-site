@@ -16,7 +16,7 @@ export class MessageSendersComponent {
   userf!:any
   email!:string
   senders!:any
-  
+
   constructor(private _dialog:MatDialog,@Inject(MAT_DIALOG_DATA) public data:string,private dialogRef: MatDialogRef<MessageSendersComponent>,private freelancerservice:FreelancerService,private clientservice:ClientService,private router:Router){
     this.id_reciever=data
     freelancerservice.freelancerObservable.subscribe((newFreelancer)=>
@@ -28,28 +28,21 @@ export class MessageSendersComponent {
     this.senders=data
     console.log(this.senders[8]._id)
     }
-   
-  
-    
     )
     }
     else if(this.userf.token){
-      
+
       this.freelancerservice.getMessagesenders(this.id_reciever).subscribe((data)=>{
         this.senders=data
-        
+
         console.log(this.senders[8].body)
         }
-       
-      
-        
+
         )
     }
 
   }
-
   repondre(recipent:string){
-
     if(this.userc.token){
     this._dialog.open(SendMessageComponent,{
       data:{'id_recipient':recipent,'id_sender':this.userc.id}
@@ -59,7 +52,7 @@ export class MessageSendersComponent {
         data:{'id_recipient':recipent,'id_sender':this.userf.id}
       })
     }
-  
+
     this.dialogRef.close()
 
   }

@@ -31,7 +31,7 @@ import { PaimentComponent } from '../paiment/paiment.component';
 
 
 export class ImboxClientComponent implements OnInit {
-  displayedColumns: string[] = ['description', 'budjet', 'periode','freelancer','status'];
+  displayedColumns: string[] = ['description', 'budjet', 'periode','freelancer','status','payment'];
   dataSource!:Client[];
   userf!:any;
   userc!:any;

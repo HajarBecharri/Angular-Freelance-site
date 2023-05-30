@@ -10,6 +10,7 @@ import { Iclient } from '../shared/models/interfaces/Iclient';
 
 
 import { IuserRegister } from '../shared/models/interfaces/IuserRegister';
+import { Router } from '@angular/router';
 
 const CLIENT_KEY='client'
 @Injectable({
@@ -18,7 +19,7 @@ const CLIENT_KEY='client'
 export class ClientService {
   private clientSubject= new BehaviorSubject<Client>(this.getclientFromLocalStorage());
   public clientObservable:Observable<Client> ;
-  constructor(private http:HttpClient,private toastrService:ToastrService) {
+  constructor(private http:HttpClient,private toastrService:ToastrService,private router:Router) {
     this.clientObservable=this.clientSubject.asObservable();
    }
 
@@ -61,14 +62,14 @@ export class ClientService {
     this.clientSubject.next(new Client());
     localStorage.removeItem(CLIENT_KEY);
     //to refresh the page
-    window.location.reload();
+    this.router.navigateByUrl('/')
   }
   completeProfile(client:Iclient){
     console.log(client)
    return this.http.post(CLIENT_COMPLETE_URL,client).pipe(
     tap({
       next:(user)=>{
-      
+
            this.toastrService.success(
             `done`,
             'send Successfully'
@@ -94,7 +95,7 @@ export class ClientService {
     }).pipe(
       tap({
         next:(user)=>{
-        
+
              this.toastrService.success(
               `done`,
               'send Successfully'
@@ -111,7 +112,7 @@ export class ClientService {
   getMessagesenders(idClient:string){
     return this.http.get(RCIEVEMESSAGE_CLIENT_URL+idClient)
   }
-  
+
   register(clientRegister:IuserRegister){
     console.log('hello');
     return this.http.post(CLIENT_REGISTER_URL,clientRegister).pipe(

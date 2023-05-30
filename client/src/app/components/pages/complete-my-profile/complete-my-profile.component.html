@@ -13,7 +13,19 @@ Homepage"  [visible]="!userc.token && !userf.token"></app-not-found>
         <mat-label>last name</mat-label>
         <input matInput type="text" formControlName="lastname">
     </mat-form-field>
+
    </div>
+   <div class="row">
+    <mat-form-field appearance="outline">
+        <mat-label>Phone</mat-label>
+        <input matInput type="text" formControlName="phone">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>username:</mat-label>
+      <input matInput type="text" formControlName="name">
+  </mat-form-field>
+   </div>
+
 
    <div class="row">
     <mat-form-field appearance="outline">
@@ -21,17 +33,17 @@ Homepage"  [visible]="!userc.token && !userf.token"></app-not-found>
         <input matInput type="text" formControlName="age">
     </mat-form-field>
     <mat-form-field appearance="outline">
-        <mat-label>name:</mat-label>
-        <input matInput type="text" formControlName="name">
+        <mat-label>N° compte banquaire:</mat-label>
+        <input  matInput type="text" formControlName="compteBanquaire">
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>email secondaire:</mat-label>
         <input matInput type="text" formControlName="emailsecondaire">
     </mat-form-field>
    </div>
-   
+
     <div class="row" *ngIf="userf.token">
-        
+
         <mat-form-field appearance="outline">
             <mat-label>motivations:</mat-label>
             <textarea formControlName="motivations" matInput
@@ -40,8 +52,8 @@ Homepage"  [visible]="!userc.token && !userf.token"></app-not-found>
                       cdkAutosizeMinRows="1"
                       cdkAutosizeMaxRows="5"></textarea>
         </mat-form-field>
-       
-       
+
+
     </div>
 
     <div class="row" *ngIf="userf.token">
@@ -52,7 +64,7 @@ Homepage"  [visible]="!userc.token && !userf.token"></app-not-found>
         </mat-form-field>
     </div>
 
-   
+
 </form>
 </div>
 

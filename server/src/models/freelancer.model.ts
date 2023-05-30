@@ -15,6 +15,7 @@ export interface Freelancer{
     password:string;
     token?:string
     imageUrl?:string
+    compteBanquaire?:number
 }   
 
 export const FreelancerSchema =new Schema<Freelancer>(
@@ -25,6 +26,7 @@ export const FreelancerSchema =new Schema<Freelancer>(
         imageUrl:{type:String,required:false},
         emailSecondaire:{type:String,required:false},
         age:{type:Number,required:false},
+        compteBanquaire:{type:Number,required:false},
         motivations:{type:String,required:false},
         email:{type:String,required:true},
         isAdmin:{type:Boolean,required:true},

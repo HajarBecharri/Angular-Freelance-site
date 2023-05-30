@@ -29,12 +29,10 @@ export class ProfileComponent{
       let freelancerObsevable2 :Observable<any> ;
       freelancerObsevable2 = this.freelancerServices.FreelancerProject(param['id']);
       freelancerObsevable2.subscribe(serverProject=>{
-        this.projects = serverProject ; 
+        this.projects = serverProject ;
       })
     freelancerObsevable.subscribe(serverfreelancer=>{
       this.freelancer = serverfreelancer;
-
-      console.log(this.freelancer.project);
     })
   })
 }

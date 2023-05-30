@@ -5,10 +5,10 @@ import { IuserLogin } from '../shared/models/interfaces/IuserLogin';
 import {HttpClient} from '@angular/common/http'
 import { FREELANCER_COMPLETE_URL, FREELANCER_LOGIN_URL,FREELANCER_REGISTER_URL, FREELANCER_PROJECT_URL, FREELANCER_URL, GET_FREELANCER_URL, RCIEVEMESSAGE_FREELANCER_URL, SENDMESSAGE_FREELANCER_URL } from '../shared/models/constantes/urs';
 import { ToastrService } from 'ngx-toastr';
-import { Ifreelancer } from '../shared/models/interfaces/Ifreelancer';
 
 
 import { IuserRegister } from '../shared/models/interfaces/IuserRegister';
+import { Router } from '@angular/router';
 
 const FREELANCER_KEY='freelancer'
 @Injectable({
@@ -18,7 +18,7 @@ export class FreelancerService {
   private freelancerSubject= new BehaviorSubject<Freelancer>(this.getFreelancerFromLocalStorage());
   public freelancerObservable:Observable<Freelancer>;
 
-  constructor(private http:HttpClient,private toastrService:ToastrService) {
+  constructor(private http:HttpClient,private toastrService:ToastrService,private router:Router ) {
     this.freelancerObservable=this.freelancerSubject.asObservable();
    }
 
@@ -43,12 +43,12 @@ export class FreelancerService {
     );
 
    }
-   completeProfile(freelancer:Ifreelancer){
+   completeProfile(freelancer:FormData){
      console.log(freelancer)
     return this.http.post(FREELANCER_COMPLETE_URL,freelancer).pipe(
       tap({
         next:(user)=>{
-        
+
              this.toastrService.success(
               `done`,
               'send Successfully'
@@ -76,7 +76,8 @@ export class FreelancerService {
     this.freelancerSubject.next(new Freelancer());
     localStorage.removeItem(FREELANCER_KEY);
     //to refresh the page
-    window.location.reload();
+    this.router.navigateByUrl('/')
+
   }
   getFreelancer(freelancer_id:string):Observable<Freelancer>{
     return this.http.get<Freelancer>(GET_FREELANCER_URL+ freelancer_id);

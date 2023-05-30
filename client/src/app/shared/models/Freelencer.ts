@@ -14,6 +14,5 @@ export class Freelancer {
     lastname!:string;
     motivations!:string
     address!:string;
-    project!:Project;
-    ImageUrl!:string;
+    imageUrl!:string;
 }

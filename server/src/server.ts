@@ -85,17 +85,16 @@ app.post("/freelancer/login",asynceHandler(async(req,res)=>{
     else {
         res.status(400).send("Username or password is invalid")
     }
-
 }
 ))
 ///complete/freelancer/
-app.post("/complete/freelancer",asynceHandler(
+app.post("/complete/freelancer",upload.single('imageFile'),asynceHandler(
     async(req,res)=>{
-        const {id,emailsecondaire,firstname,lastname,age,motivations,name}=req.body;
+        const {id,emailsecondaire,firstname,lastname,age,motivations,name,imageUrl,compteBanquaire,phone}=req.body;
         
         const freelancer=await FreelancerModel.updateMany(
             { _id: id },
-            { $set: {firstName:firstname,lastName:lastname,emailSecondaire:emailsecondaire,motivations:motivations,age:age ,name:name}},
+            { $set: {firstName:firstname,lastName:lastname,emailSecondaire:emailsecondaire,motivations:motivations,age:age ,name:name,compteBanquaire:compteBanquaire,imageUrl:imageUrl,phone:phone}},
         );
         if(freelancer)
         res.send(freelancer)

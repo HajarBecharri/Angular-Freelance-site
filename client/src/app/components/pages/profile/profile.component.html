@@ -2,7 +2,7 @@
 Homepage"  [visible]="!userc.token && !userf.token"></app-not-found>
 <div class="wrapper" *ngIf="userf.token || userc.token">
   <div class="left">
-      <img src="assets/{{freelancer.ImageUrl}}"
+      <img src="assets/{{freelancer.imageUrl}}"
       alt="user" width="100">
       <h4>{{freelancer.name}}</h4>
   </div>
@@ -17,7 +17,11 @@ Homepage"  [visible]="!userc.token && !userf.token"></app-not-found>
                <div class="data">
                  <h4>Phone</h4>
                   <p>{{freelancer.phone}}</p>
-            </div>
+            </div><br>
+            <div class="data">
+              <h4>Motivation</h4>
+               <p>{{freelancer.motivations}}</p>
+         </div>
           </div>
       </div>
 

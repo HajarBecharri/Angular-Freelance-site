@@ -43,11 +43,20 @@ Homepage" [visible]="!userc.token && !userf.token"></app-not-found>
     <th mat-header-cell *matHeaderCellDef> </th>
     <td mat-cell *matCellDef="let element">
     <button mat-flat-button *ngIf="!element.done && element.start" (click)="doneProject(element.id)" color="primary" style="color: black;font-weight: bold;">done</button>
-    <button mat-flat-button *ngIf="!element.done && element.start" (click)="paier(element.id)" color="primary" style="color: black;font-weight: bold;">paier</button>
      <mat-icon *ngIf="element.done && element.start" aria-hidden="false" aria-label="Example home icon" fontIcon="done" style="color: green;"></mat-icon>
 
     </td>
   </ng-container>
+
+  <ng-container matColumnDef="payment" >
+    <th mat-header-cell *matHeaderCellDef> </th>
+    <td mat-cell *matCellDef="let element">
+
+    <button mat-flat-button *ngIf="element.done && element.start" (click)="paier(element.id)" color="primary" style="color: black;font-weight: bold;">paier</button>
+
+    </td>
+  </ng-container>
+
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
