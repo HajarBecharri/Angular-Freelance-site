@@ -4,7 +4,6 @@ export class Client {
     name!:string;
     token!:string;
     emailsecondaire!:string;
-    gender!:string;
     age!:number;
     firstname!:string;
     lastname!:string;

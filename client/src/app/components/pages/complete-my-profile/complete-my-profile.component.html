@@ -18,7 +18,7 @@ Homepage"  [visible]="!userc.token && !userf.token"></app-not-found>
    <div class="row">
     <mat-form-field appearance="outline">
         <mat-label>Phone</mat-label>
-        <input matInput type="text" formControlName="phone">
+        <input matInput type="number" formControlName="phone">
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>username:</mat-label>
@@ -30,15 +30,15 @@ Homepage"  [visible]="!userc.token && !userf.token"></app-not-found>
    <div class="row">
     <mat-form-field appearance="outline">
         <mat-label>age:</mat-label>
-        <input matInput type="text" formControlName="age">
+        <input matInput type="number" formControlName="age">
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>N° compte banquaire:</mat-label>
-        <input  matInput type="text" formControlName="compteBanquaire">
+        <input  matInput type="number" formControlName="compteBanquaire">
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>email secondaire:</mat-label>
-        <input matInput type="text" formControlName="emailsecondaire">
+        <input matInput type="email" formControlName="emailsecondaire">
     </mat-form-field>
    </div>
 

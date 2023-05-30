@@ -8,7 +8,6 @@ export class Freelancer {
     isAdmin!:boolean;
     phone!:string;
     emailsecondaire!:string;
-    gender!:string;
     age!:number;
     firstname!:string;
     lastname!:string;
